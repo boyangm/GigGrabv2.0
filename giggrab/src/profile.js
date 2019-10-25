@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as filestack from 'filestack-js';
-const client = filestack.init('AFeiQyudCRNK8T2g46sKFz');
+const client = filestack.init('***');
 
 class Profile extends Component {
     state = {
@@ -17,15 +17,15 @@ class Profile extends Component {
         this.props.history.push('/');
     }
 
-    handleChange = (e) => {
-        const { name, value } = e.target;
+    handleChange = (event) => {
+        const { name, value } = event.target;
             this.setState({ [name]: value })
         return console.log(this.state);
     }
 
 
-    handleSubmit = (e) => {
-        e.preventDefault();
+    handleSubmit = (event) => {
+        event.preventDefault();
         const { name, password, instruments, image, email, bio } = this.state;
         this.setState({
             name,
@@ -36,7 +36,7 @@ class Profile extends Component {
             image,
         }
         );
-        e.target.reset();
+        event.target.reset();
         this.renderData(this.state)
         this.setState({
             nname: '',
@@ -49,8 +49,8 @@ class Profile extends Component {
 
     }
 
-    handleInstrumentChange = (e) => {
-        const instrument = e.target.value;
+    handleInstrumentChange = (event) => {
+        const instrument = event.target.value;
         const prevState = this.state.instruments;
 
         if (prevState.length > 0) {
