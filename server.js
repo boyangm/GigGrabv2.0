@@ -4,11 +4,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // const sgMail = require('@sendgrid/mail');
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const routes = require("./routes");
 const app = express();
 
+const routes = require("./routes");
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(routes);
+
 
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
@@ -18,13 +20,12 @@ mongoose.connect(MONGODB_URI)
 .catch(err => console.log(err));
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('abantudev/build'))
+    app.use(express.static('giggrab/build'))
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'abantudev', 'build', 'index.html'))
+        res.sendFile(path.resolve(__dirname, 'giggrab', 'build', 'index.html'))
     })
 }
 
-app.use(routes);
 
 var PORT = process.env.PORT || 5000;
 

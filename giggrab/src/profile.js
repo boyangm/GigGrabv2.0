@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { API } from './utils/api'
 import * as filestack from 'filestack-js';
-const client = filestack.init('****');
+const client = filestack.init('AFeiQyudCRNK8T2g46sKFz');
 
 class Profile extends Component {
     state = {
@@ -20,10 +20,6 @@ class Profile extends Component {
 
     handleChange = (e) => {
         const { name, value } = e.target;
-        const instruments = this.state.instruments;
-        name === 'instruments' && this.state.instruments.indexOf(value) === -1
-            ? this.setState({ [name]: [...instruments, value] })
-            :
             this.setState({ [name]: value })
         return console.log(this.state);
     }
@@ -44,8 +40,11 @@ class Profile extends Component {
         e.target.reset();
         this.renderData(this.state)
         this.setState({
-            name: '',
+            nname: '',
             email: '',
+            password: '',
+            instruments: [],
+            image: '',
             bio: ''
         })
 
@@ -95,11 +94,10 @@ class Profile extends Component {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(data)
         }).then(res => {
-            console.log(data);
+            console.log(res);
             this.redirectToTarget();
         }).catch(err => {
             console.log(err)
@@ -125,7 +123,7 @@ class Profile extends Component {
                     <label for="bio">Bio:</label>
                     <textarea onChange={this.handleChange} value={this.state.bio} name='bio' />
                     <label for="start">Instrument:</label>
-                    <select className="instrumentbox" multiple={true} value={this.state.instruments} onChange={this.handleInstrumentChange}>
+                    <select className="instrumentbox"  multiple={true} value={this.state.instruments} onChange={this.handleInstrumentChange}>
                         <option value="Guitar">Guitar</option>
                         <option value="Bass">Bass</option>
                         <option value="Drums">Drums</option>
