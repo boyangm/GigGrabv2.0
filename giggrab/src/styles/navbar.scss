@@ -1,0 +1,57 @@
+.navbar{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    flex-flow: row;
+    background: $base;
+        .title{
+            @include nav(center);
+            margin-left: 5px;
+            width: 50%;
+            @media only screen and (max-width: 600px) {
+                font-size: .8rem;
+                width: 40px;
+  
+            }
+            @media screen and (min-width: 600px) and (max-width: 768px) { 
+                font-size: 1.2rem;
+            
+            }
+        }
+        .links{
+            
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-self: center;
+            width: 50%;
+            margin: 0;
+            .linkItems{
+                @include nav(center);
+                width: div(4);
+                text-decoration: none;
+                &.active{
+                    color: white;
+                }
+                @media only screen and (max-width: 600px) {
+                    font-size: .8rem;
+                    margin: 0 10px;
+                    padding: 0;
+      
+                }
+                @media screen and (min-width: 600px) and (max-width: 768px) { 
+                    font-size: 1.2rem;
+                    margin: 0 10px;
+                    padding: 0;
+                }
+            }
+
+        }
+        @media only screen and (max-width: 600px) {
+              font-size: .75rem;
+
+          }
+
+};
