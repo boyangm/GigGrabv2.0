@@ -6,6 +6,7 @@ const userSchema = new Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
     instruments: [String],
+    image: [String],
     numberofgigs: Number,
     gigsHosted: [Number],
     gigsEmployed: [Number],

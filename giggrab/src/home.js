@@ -1,9 +1,18 @@
 import React from 'react'
+import {Consumer} from './gigcontext'
+import LeftPane from './leftPane';
 
 const Home = () =>{
 
     return(
-        <h1>GigGrab</h1>
+        <Consumer>
+            {({users}) =>
+                <div>
+                <LeftPane data = {users[1]}></LeftPane>
+                </div>
+            }
+        </Consumer>
+        
     )
 }
 

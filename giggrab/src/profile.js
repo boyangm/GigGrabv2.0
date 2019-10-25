@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { API } from './utils/api'
 import * as filestack from 'filestack-js';
 const client = filestack.init('AFeiQyudCRNK8T2g46sKFz');
 

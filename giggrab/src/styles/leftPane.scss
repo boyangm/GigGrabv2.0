@@ -1,0 +1,24 @@
+.leftCont{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+
+    width: 25%;
+    .proTitle{
+        margin: 20px auto; 
+
+    }
+    .profilePic{
+        width: 200px;
+        border-radius: 100%;
+        margin: 0 auto;
+
+    }
+    .instruments,
+    .rating{
+        margin: 20px auto 0; 
+    }
+
+}
