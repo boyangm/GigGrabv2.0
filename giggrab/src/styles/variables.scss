@@ -1,5 +1,5 @@
 //colors
-$base: #0278a3;
+$base: #35325c;
 $compliment : complement($base);
 $compliment-light: lighten($compliment, 30%);
 
@@ -18,6 +18,24 @@ $mainFont: 'Cabin', sans-serif;
     width: 100%;
     height: $height;
 }
+@mixin button($primary,$secondary){
+    background: $primary;
+    margin: 10px 10px 0;
+    min-width: 100px;
+    color: lighten($secondary,30%);
+    font-family: $mainFont;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    &:hover{
+        color: white;
+        cursor: pointer;
+    }
+    @media only screen and (max-width: 600px) {
+        font-size: 1rem;
+
+    }
+}
+
 @function div($number){
     
     @return (100/$number) + '%';

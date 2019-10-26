@@ -18,9 +18,6 @@ const LeftPane = (props) =>{
                  <h4 className = "rating">{data.rating.$numberDecimal}</h4>
 
                  </div>
-                 
-             
-             
              )
           }
       </div>
