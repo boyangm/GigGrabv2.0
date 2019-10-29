@@ -1,12 +1,17 @@
 import React, {Component} from 'react'
+import {getJwt} from './helpers/jwt'
+
 
 const GigsContext = React.createContext();
 
 export class Provider extends Component{
+
     state = {
         users:[],
-        localUser:{},
+        localUser:undefined,
         users:[],
+        data: this.data,
+        isAuth: false
     }
 
     fetchUsers =() =>{
@@ -16,17 +21,54 @@ export class Provider extends Component{
             console.log(data);
             return this.setState({users: data})
         })
-        .catch(err => console.log(err))
+        .catch(err =>{
+        
+            console.log(err)
+            this.props.history.push('/login')
+        })
 
     }
+    authLogin = (data) =>{
+        console.log('made it')
+        fetch('api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err)
+            })
+        
+    }
+
+  
 
     componentDidMount(){
-        this.fetchUsers();
+        const jwt = getJwt();
+        if(!jwt){
+            this.props.history.push('/login')
 
+        }
+
+        this.fetchUsers();
+        this.setState({
+            localUser: JSON.parse(jwt),
+            isAuth: true
+
+        })
     }
     render(){
         return(
-            <GigsContext.Provider value = {this.state}>
+            <GigsContext.Provider value = {{
+                state:this.state,
+                actions: {
+                    login: this.authLogin
+                }
+                
+                }}>
             {this.props.children}
             </GigsContext.Provider>
         )

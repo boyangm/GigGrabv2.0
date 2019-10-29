@@ -7,5 +7,6 @@ router.route('/users')
     .get(userController.findAll)
     .put(userController.update)
 
+router.post('/login',userController.login)
 
 module.exports = router;

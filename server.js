@@ -2,12 +2,14 @@ const express= require('express')
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 // const sgMail = require('@sendgrid/mail');
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const app = express();
 
 const routes = require("./routes");
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(express.json());
 app.use(routes);
 
