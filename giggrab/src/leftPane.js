@@ -16,8 +16,12 @@ const LeftPane = (props) =>{
                  <h3 className = "proTitle">welcome back {data.name} !</h3>
                  <img className= "profilePic" src = {data.image} alt ="profile"/>
                  <h4 className = "instruments">{data.instruments.map( item => `${item}, `)}</h4>
-                 <h4 className = "rating">{data.rating.$numberDecimal}</h4>
-                 <Link to='/giftgig'><button>Gift Gig!</button></Link>
+                 <h4 className = "rating">{` Rating: ${data.rating.$numberDecimal}`}</h4>
+                 <div className = 'buttonCont'>
+                 <Link to='/giftgig'><button className = 'gigbutton'>Gift Gig!</button></Link>
+                <Link  to ={`/${data._id}`}><button className ='gigbutton' >Edit Profile</button></Link>
+
+                </div>
 
                  </div>
              )

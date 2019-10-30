@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set('useFindAndModify', false);
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -8,8 +9,8 @@ const userSchema = new Schema({
     instruments: [String],
     image: [String],
     numberofgigs: Number,
-    gigsHosted: [Number],
-    gigsEmployed: [Number],
+    gigsHosted: [Schema.Types.ObjectId],
+    gigsEmployed: [Schema.Types.ObjectId],
     moneyEarned: { type: Number, default: 0 },
     rating: { type: Schema.Types.Decimal128, default: 5.0 },
     bio: String

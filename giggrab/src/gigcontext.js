@@ -1,91 +1,134 @@
-import React, {Component} from 'react'
-import {getJwt} from './helpers/jwt'
+import React, { Component } from 'react'
+import { getJwt } from './helpers/jwt'
 
 
 const GigsContext = React.createContext();
 
-export class Provider extends Component{
+export class Provider extends Component {
 
     state = {
-        users:[],
-        localUser:undefined,
-        users:[],
+        users: [],
+        localUser: undefined,
+        users: [],
         data: this.data,
         isAuth: false,
-        gigs:[]
+        gigs: [],
+        viewgig: ''
     }
-
-    fetchUsers =() =>{
+    // grabs all the users from DB
+    fetchUsers = () => {
         fetch('/api/users')
-        .then(res =>res.json())
-        .then(data =>{
-            console.log(data);
-            return this.setState({users: data})
-        })
-        .catch(err =>{
-        
-            console.log(err)
-            this.props.history.push('/login')
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                return this.setState({ users: data })
+            })
+            .catch(err => {
+
+                console.log(err)
+                this.props.history.push('/login')
+            })
 
     }
-    fetchGigs =() =>{
+    
+    // grabs all the gigs from the  DB
+    fetchGigs = () => {
         fetch('/api/gigs')
-        .then(res =>res.json())
-        .then(data =>{
-            console.log(data);
-            return this.setState({gigs: data})
-        })
-        .catch(err =>{
-        
-            console.log(err)
-            this.props.history.push('/login')
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                return this.setState({ gigs: data })
+            })
+            .catch(err => {
+
+                console.log(err)
+                this.props.history.push('/login')
+            })
 
     }
 
-    fetchOneGig = (id) =>{
-        fetch('/api/gigs/:id')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            return data;
-        })
+
+    // fetches one gig from the DB
+    fetchOneGig = (id) => {
+        fetch(`api/gigs/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ viewgig: data })
+                console.log(this.state.viewgig);
+                return data;
+            })
     }
-    authLogin = (data) =>{
+
+// if there is a token in local storage auth will be true and the local user will update to what is in the token
+    authLogin = (data) => {
         console.log('made it')
         fetch('api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(res => {
-                console.log(res);
-            }).catch(err => {
-                console.log(err)
-            })
-        
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err)
+        })
+
     }
 
-  
+    grabgig = (id) =>{
+        const data = {
+            memberId: [this.state.localUser._id],
+            gigId: [id]
+        }
+        fetch(`api/gigs/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+           res.json()
+        }).then(post =>{
+            console.log(post);
+            this.updateMember(data,id)
+        })
+        .catch(err => {
+            console.log(err)
+        })
 
-    componentDidMount(){
+    }
+    updateMember = (data) =>{
+        fetch(`api/users/gigs/${data.memberId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+           res.json()
+        }).then(data =>{
+            console.log(data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+    }
+    componentDidMount() {
         const jwt = getJwt();
-        if(jwt){
-           this.setState({
-               localUser: JSON.parse(jwt),
+        if (jwt) {
+            this.setState({
+                localUser: JSON.parse(jwt),
                 isAuth: true
             })
 
-        }else{
+        } else {
             this.setState({
                 localUser: undefined,
-                 isAuth: false
-             })
+                isAuth: false
+            })
         }
-
-
         this.fetchUsers();
         this.fetchGigs();
         this.setState({
@@ -95,18 +138,20 @@ export class Provider extends Component{
         })
     }
 
-    render(){
-        return(
-            <GigsContext.Provider value = {{
-                state:this.state,
+    render() {
+        return (
+            <GigsContext.Provider value={{
+                state: this.state,
                 actions: {
                     login: this.authLogin,
                     fetchGigs: this.fetchGigs,
-                    fetchUsers: this.fetchUsers
+                    fetchUsers: this.fetchUsers,
+                    getgig: this.fetchOneGig,
+                    grabgig: this.grabgig
                 }
-                
-                }}>
-            {this.props.children}
+
+            }}>
+                {this.props.children}
             </GigsContext.Provider>
         )
     }

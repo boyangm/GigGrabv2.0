@@ -2,6 +2,7 @@ import React from 'react'
 import {Consumer} from './gigcontext'
 import LeftPane from './leftPane';
 import MiddlePane from './middlepane'
+import RightPane from './rightpane'
 
 const Home = (props) =>{
 
@@ -12,7 +13,9 @@ const Home = (props) =>{
                 ?<div className = 'homeCont'>
 
                     <LeftPane   data = {state.localUser}></LeftPane>
-                    <MiddlePane  data = {state.gigs}></MiddlePane>
+                    <MiddlePane  data = {state.gigs} ></MiddlePane>
+                    <RightPane  data ={state.viewgig}></RightPane>
+
                 </div> 
                 : props.history.push('/login')
             }

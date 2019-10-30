@@ -21,7 +21,7 @@ module.exports = {
       },
       update: function(req, res) {
         db.Gigs
-          .findOneAndUpdate({ _id: req.params.id }, req.body)
+          .findOneAndUpdate({ _id: req.params.id }, { $push: {gigsMates: req.body.memberId} })
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },

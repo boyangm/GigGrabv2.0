@@ -44,6 +44,12 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
+      updateGigs: function(req, res) {
+        db.User
+        .findOneAndUpdate({ _id: req.params.id }, { $push:{gigsEmployed: req.body.gigId} })
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
       remove: function(req, res) {
         db.User
           .findById({ _id: req.params.id })

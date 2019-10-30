@@ -1,0 +1,29 @@
+.rightCont{
+    position: sticky;
+    position: -webkit-sticky;
+    min-height: 200px;
+    z-index: 2;
+    top: -1px;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    width:100%;
+    border-bottom: 1px solid lightgray;
+    .rightAmount{
+        margin: 0 auto;
+    }
+    .rightdate{
+        margin: 0 auto;
+    }
+    .buttonCont{
+        width: 100%;
+        margin: 0 auto;
+        .viewbutton{
+            @include button($base, $compliment);
+            max-width: 175px;
+    
+        }
+
+    }
+}
+    

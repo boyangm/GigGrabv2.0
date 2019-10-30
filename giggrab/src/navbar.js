@@ -9,7 +9,7 @@ const NavBar  = () =>{
          <NavLink exact to ='/projects' className="linkItems" >Activity</NavLink>
          <NavLink  exact to ='/contact' className="linkItems">Talent Pool</NavLink>
          <NavLink exact to = "/home" className="linkItems" >Home</NavLink>
-         <NavLink exact to = "/home" className="linkItems" >Logout</NavLink>
+         <NavLink exact to = "/logout" className="linkItems" >Logout</NavLink>
          </div>
      </div>
  )
