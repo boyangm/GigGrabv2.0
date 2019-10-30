@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 const LeftPane = (props) =>{
@@ -16,6 +17,7 @@ const LeftPane = (props) =>{
                  <img className= "profilePic" src = {data.image} alt ="profile"/>
                  <h4 className = "instruments">{data.instruments.map( item => `${item}, `)}</h4>
                  <h4 className = "rating">{data.rating.$numberDecimal}</h4>
+                 <Link to='/giftgig'><button>Gift Gig!</button></Link>
 
                  </div>
              )

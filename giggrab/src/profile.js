@@ -16,7 +16,7 @@ class Profile extends Component {
     }
 
     redirectToTarget = () => {
-        this.props.history.push('/');
+        this.props.history.push('/login');
     }
 
     handleChange = (event) => {
@@ -94,7 +94,7 @@ class Profile extends Component {
             if (!data.message){
                 console.log(data);
                 this.setState({
-                    nname: '',
+                    name: '',
                     email: '',
                     password: '',
                     instruments: [],

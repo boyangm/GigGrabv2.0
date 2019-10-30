@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Consumer} from './gigcontext'
 
 class Giftgig extends Component {
     state = {
@@ -6,18 +7,25 @@ class Giftgig extends Component {
         instruments: [],
         location: '',
         description: '',
-        moneyPaid: ''
+        moneyPaid: '',
+        author: ''
 
     }
 
     redirectToTarget = () => {
-        this.props.history.push('/');
+        this.props.history.push('/home');
     }
 
     handleChange = (event) => {
         const { name, value } = event.target;
             this.setState({ [name]: value })
         return console.log(this.state);
+    }
+
+    getAuthor = (author) =>{
+        console.log(author);
+        return this.setState({author})
+
     }
 
 
@@ -34,14 +42,12 @@ class Giftgig extends Component {
         );
         event.target.reset();
         this.renderData(this.state)
-        this.setState({
-            title: '',
-            instruments: [],
-            location: '',
-            description: '',
-            moneyPaid: ''
-        })
+     
 
+    }
+    componentDidMount(){
+        const user =JSON.parse(localStorage.getItem('token'));
+        this.setState({author: user._id})
     }
 
     handleInstrumentChange = (event) => {
@@ -69,6 +75,8 @@ class Giftgig extends Component {
     };
 
 
+
+
     renderData = data => {
         fetch('/api/gigs', {
             method: 'POST',
@@ -77,8 +85,18 @@ class Giftgig extends Component {
             },
             body: JSON.stringify(data)
         }).then(res => {
-            console.log(res);
-            this.redirectToTarget();
+            
+            this.setState({
+                title: '',
+                instruments: [],
+                location: '',
+                description: '',
+                moneyPaid: '',
+                author: ''
+            })
+               this.redirectToTarget();
+
+
         }).catch(err => {
             console.log(err)
         })
@@ -89,17 +107,23 @@ class Giftgig extends Component {
     render() {
 
         return (
-            <div className="profileCont">
+            <Consumer>
+                {(state, actions) =>
+                state.isAuth = 'true'
+
+                ?
+                (
+                <div className="profileCont">
                 <h3>Gift a Gig</h3>
                 <form onSubmit={this.handleSubmit} ref={(el) => this.myFormRef = el}>
                     <label for="title">Title:</label>
-                    <input onChange={this.handleChange} value={this.state.name} type='text' name='name' />
+                    <input onChange={this.handleChange} value={this.state.title} type='text' name='title' />
                     <label for="location">Location:</label>
-                    <input onChange={this.handleChange} value={this.state.name} type='text' name='name' />
+                    <input onChange={this.handleChange} value={this.state.location} type='text' name='location' />
                     <label for="moneyPaid">Amount:</label>
-                    <input onChange={this.handleChange} value={this.state.name} type='text' name='name' />
+                    <input onChange={this.handleChange} value={this.state.moneyPaid} type='text' name='moneyPaid' />
                     <label for="description">Description:</label>
-                    <textarea onChange={this.handleChange} value={this.state.bio} name='bio' />
+                    <textarea onChange={this.handleChange} value={this.state.description} name='description' />
                     <label for="instrument">Instrument:</label>
                     <select className="instrumentbox"  multiple={true} value={this.state.instruments} onChange={this.handleInstrumentChange}>
                         <option value="Guitar">Guitar</option>
@@ -113,6 +137,11 @@ class Giftgig extends Component {
                     <button type="submit">Submit</button>
                 </form>
             </div>
+
+                )
+            : this.props.history.push('/login')
+                }
+            </Consumer>
         )
     }
 }

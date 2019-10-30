@@ -12,6 +12,6 @@ const GigSchema = new Schema({
     rating: { type: Schema.Types.Decimal128, default: 5.0 },
 });
 
-const Gig = mongoose.model("User", GigSchema);
+const Gigs = mongoose.model("Gigs", GigSchema);
 
-module.exports = User;
+module.exports = Gigs;

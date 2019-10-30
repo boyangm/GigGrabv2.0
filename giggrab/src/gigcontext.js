@@ -11,7 +11,8 @@ export class Provider extends Component{
         localUser:undefined,
         users:[],
         data: this.data,
-        isAuth: false
+        isAuth: false,
+        gigs:[]
     }
 
     fetchUsers =() =>{
@@ -20,6 +21,20 @@ export class Provider extends Component{
         .then(data =>{
             console.log(data);
             return this.setState({users: data})
+        })
+        .catch(err =>{
+        
+            console.log(err)
+            this.props.history.push('/login')
+        })
+
+    }
+    fetchGigs =() =>{
+        fetch('/api/gigs')
+        .then(res =>res.json())
+        .then(data =>{
+            console.log(data);
+            return this.setState({gigs: data})
         })
         .catch(err =>{
         
@@ -63,6 +78,7 @@ export class Provider extends Component{
 
 
         this.fetchUsers();
+        this.fetchGigs();
         this.setState({
             localUser: JSON.parse(jwt),
             isAuth: true
