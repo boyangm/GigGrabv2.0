@@ -48,10 +48,19 @@ export class Provider extends Component{
 
     componentDidMount(){
         const jwt = getJwt();
-        if(!jwt){
-            this.props.history.push('/login')
+        if(jwt){
+           this.setState({
+               localUser: JSON.parse(jwt),
+                isAuth: true
+            })
 
+        }else{
+            this.setState({
+                localUser: undefined,
+                 isAuth: false
+             })
         }
+
 
         this.fetchUsers();
         this.setState({

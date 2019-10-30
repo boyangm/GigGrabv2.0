@@ -2,14 +2,16 @@ import React from 'react'
 import {Consumer} from './gigcontext'
 import LeftPane from './leftPane';
 
-const Home = () =>{
+const Home = (props) =>{
 
     return(
         <Consumer>
-            {({users}) =>
-                <div>
-                <LeftPane data = {users[1]}></LeftPane>
-                </div>
+            {({state,actions}) =>
+                state.isAuth = 'true'
+                ?<div>
+                <LeftPane data = {state.localUser}></LeftPane>
+                </div> 
+                : props.history.push('/login')
             }
         </Consumer>
         

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as filestack from 'filestack-js';
-const client = filestack.init('***');
+const client = filestack.init('AFeiQyudCRNK8T2g46sKFz');
 
 class Profile extends Component {
     state = {
@@ -9,7 +9,9 @@ class Profile extends Component {
         password: '',
         instruments: [],
         image: '',
-        bio: ''
+        bio: '',
+        message: ''
+
 
     }
 
@@ -37,15 +39,7 @@ class Profile extends Component {
         }
         );
         event.target.reset();
-        this.renderData(this.state)
-        this.setState({
-            nname: '',
-            email: '',
-            password: '',
-            instruments: [],
-            image: '',
-            bio: ''
-        })
+        this.renderData({ name, password, instruments, image, email, bio })
 
     }
 
@@ -95,10 +89,24 @@ class Profile extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(res => {
-            console.log(res);
-            this.redirectToTarget();
-        }).catch(err => {
+        }).then(res => res.json())
+        .then( data =>{
+            if (!data.message){
+                console.log(data);
+                this.setState({
+                    nname: '',
+                    email: '',
+                    password: '',
+                    instruments: [],
+                    image: '',
+                    bio: ''
+                })
+                this.redirectToTarget();
+            }
+            this.setState({message:data.message})
+            console.log(data.message);
+        })
+        .catch(err => {
             console.log(err)
         })
 
@@ -115,6 +123,7 @@ class Profile extends Component {
                     <input onChange={this.handleChange} value={this.state.name} type='text' name='name' />
                     <label for="password">Password:</label>
                     <input onChange={this.handleChange} value={this.state.password} type='text' name='password' />
+                    <p style = {{color:'red'}}>{this.state.message}</p>
                     <label for="email">Email:</label>
                     <input onChange={this.handleChange} value={this.state.email} type='text' name='email' />
                     <label for="proImage">Profile Image:</label>

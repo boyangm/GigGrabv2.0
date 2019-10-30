@@ -49,8 +49,7 @@ class Landing extends Component {
            .catch(err => {
                console.log(err)
            })
-       
-        
+          
     }
  
 
@@ -63,8 +62,9 @@ class Landing extends Component {
                 <h1 className = "landingTitle">GIG GRAB</h1>
                 <h3 className = "landingSubTitle">WHERE MUSICIANS EARN</h3>
                 <form >
+                <p className = "landingLabel">{this.state.message}</p>
                 <label className = "landingLabel" for = "email"> Email:</label>
-                <input name = "email" type = "text" onChange = {this.handlevaluechange} value = {this.state.email} ></input>
+                <input name = "email" type = "input" onChange = {this.handlevaluechange} value = {this.state.email} ></input>
                 <label className = "landingLabel" for = "password"> Password:</label>
                 <input type = "password" name = "password" onChange = {this.handlevaluechange} value = {this.state.password}></input>
                 <br></br>
