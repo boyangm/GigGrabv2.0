@@ -43,6 +43,15 @@ export class Provider extends Component{
         })
 
     }
+
+    fetchOneGig = (id) =>{
+        fetch('/api/gigs/:id')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            return data;
+        })
+    }
     authLogin = (data) =>{
         console.log('made it')
         fetch('api/login', {
@@ -85,12 +94,15 @@ export class Provider extends Component{
 
         })
     }
+
     render(){
         return(
             <GigsContext.Provider value = {{
                 state:this.state,
                 actions: {
-                    login: this.authLogin
+                    login: this.authLogin,
+                    fetchGigs: this.fetchGigs,
+                    fetchUsers: this.fetchUsers
                 }
                 
                 }}>

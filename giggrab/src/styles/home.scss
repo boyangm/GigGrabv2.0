@@ -1,0 +1,17 @@
+.homeCont{
+    @include default(100vh);
+    display: flex;
+    flex-flow: row;
+    .leftParent{
+        position: relative;
+        width: 25%;
+    }
+    .middleParent{
+        position: relative;
+        width: 37.5%;
+        border-left: 1px solid lightgray;
+        border-right: 1px solid lightgray;
+        text-align: center;
+    }
+
+}

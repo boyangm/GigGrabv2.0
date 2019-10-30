@@ -8,7 +8,7 @@ const LeftPane = (props) =>{
    console.log(typeof data)
    console.log(JSON.stringify(data));
   return (
-      <div>
+      <div className = 'leftParent'>
           {
              data && 
              (

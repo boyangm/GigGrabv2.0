@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const GigSchema = new Schema({
     title: { type: String, required: true },
     location: { type: String, required: true },
+    date: {type: Date, required: true},
     instruments: [String],
     description: String,
     gigsMates: [Schema.Types.ObjectId],

@@ -12,5 +12,9 @@ router.route('/gigs')
     .post(gigController.create)
     .get(gigController.findAll)
     .put(userController.update)
+router.route('/gigs/:id')
+    .post(gigController.create)
+    .get(gigController.findById)
+    .put(userController.update)
 
 module.exports = router;

@@ -8,6 +8,7 @@ class Giftgig extends Component {
         location: '',
         description: '',
         moneyPaid: '',
+        date: '',
         author: ''
 
     }
@@ -31,16 +32,16 @@ class Giftgig extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const { title, location, instruments, moneyPaid, description } = this.state;
+        const { title, location, instruments, moneyPaid, description, date } = this.state;
         this.setState({
             title,
             description,
             location,
             instruments,
-            moneyPaid
+            moneyPaid,
+            date
         }
         );
-        event.target.reset();
         this.renderData(this.state)
      
 
@@ -92,7 +93,8 @@ class Giftgig extends Component {
                 location: '',
                 description: '',
                 moneyPaid: '',
-                author: ''
+                author: '',
+                date: ''
             })
                this.redirectToTarget();
 
@@ -118,6 +120,8 @@ class Giftgig extends Component {
                 <form onSubmit={this.handleSubmit} ref={(el) => this.myFormRef = el}>
                     <label for="title">Title:</label>
                     <input onChange={this.handleChange} value={this.state.title} type='text' name='title' />
+                    <label for="date">date:</label>
+                    <input onChange={this.handleChange} value={this.state.date} type='date' name='date' />
                     <label for="location">Location:</label>
                     <input onChange={this.handleChange} value={this.state.location} type='text' name='location' />
                     <label for="moneyPaid">Amount:</label>

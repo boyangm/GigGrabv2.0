@@ -1,0 +1,25 @@
+.middleCont{
+    @include default(200px);
+
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    width:100%;
+    border-bottom: 1px solid lightgray;
+    .middleAmount{
+        margin: 0 auto;
+    }
+    .middledate{
+        margin: 0 auto;
+    }
+    .buttonCont{
+        width: 100%;
+        .gigbutton{
+            @include button($base, $compliment);
+            max-width: 175px;
+    
+        }
+
+    }
+    
+}
