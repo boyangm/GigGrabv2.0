@@ -111,11 +111,9 @@ class Giftgig extends Component {
         return (
             <Consumer>
                 {(state, actions) =>
-                state.isAuth = 'true'
+                (state.isAuth='true')
 
-                ?
-                (
-                <div className="profileCont">
+                ?(<div className="profileCont">
                 <h3>Gift a Gig</h3>
                 <form onSubmit={this.handleSubmit} ref={(el) => this.myFormRef = el}>
                     <label for="title">Title:</label>

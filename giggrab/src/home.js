@@ -9,15 +9,20 @@ const Home = (props) =>{
     return(
         <Consumer>
             {({state,actions}) =>
-                state.isAuth = 'true'
-                ?<div className = 'homeCont'>
+                <div>
+                    {
+                    (state.isAuth ='true')
+                    ?(<div className = 'homeCont'>
 
-                    <LeftPane   data = {state.localUser}></LeftPane>
-                    <MiddlePane  data = {state.gigs} ></MiddlePane>
-                    <RightPane  data ={state.viewgig}></RightPane>
+                        <LeftPane   data = {state.localUser}></LeftPane>
+                        <MiddlePane  data = {state.gigs} actions ={actions}></MiddlePane>
+                        <RightPane  data ={state.viewgig}></RightPane>
 
-                </div> 
-                : props.history.push('/login')
+                    </div>)
+                    : props.history.push('/login')
+
+                    }
+                </div>
             }
         </Consumer>
         

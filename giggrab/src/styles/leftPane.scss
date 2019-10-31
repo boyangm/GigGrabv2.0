@@ -1,12 +1,12 @@
 .leftCont{
     position: -webkit-sticky;
     position: sticky;
+    z-index: 2;
+    top: -1px;
     display: flex;
     flex-flow: column;
     justify-content: center;
-    z-index: 2;
     background: white;
-    top: -1px;
 
 
     width: 100%;
@@ -26,6 +26,7 @@
     }
     button{
         @include button($base, $compliment);
+    
     }
 
 }
