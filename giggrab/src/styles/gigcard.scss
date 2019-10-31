@@ -1,0 +1,27 @@
+.activityCard{
+    position:relative;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    height: 300px;
+
+    width:100%;
+    margin: 0 auto;
+    .activityTitle{
+        width: 75%;
+    }
+    .bandArea{
+        position:relative;
+        display: flex;
+        justify-content: flex-start;
+        width:40%;
+        .membersSlot{
+            width:25%;
+        }
+    
+        .bandPic{
+            height:40px;
+            border-radius:100%;
+        }
+    }
+    }

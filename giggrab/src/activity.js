@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Consumer} from './gigcontext'
 import {Link} from 'react-router-dom'
+import GigCard from './gigcard'
 class Activity extends Component{
     state ={
         gigs: []
@@ -24,14 +25,9 @@ class Activity extends Component{
                 { context =>
                     (context.state.isAuth = 'true' && context.state.localUser)
                     ?(
-                        <div>
+                        <div className = 'activityBoard'>
                         {context.state.localUser.gigsEmployed.map(gig =>
-                            <div>
-                                <h4>{gig.title}</h4>
-                                <div>
-                                <button onClick = {() => context.actions.getgig(gig._id)} id = {gig._id} className ='gigbutton'>View Gig!</button>
-                                </div>
-                            </div>
+                          <GigCard key = {gig._id} data={gig}></GigCard>
                         
                         )}
     

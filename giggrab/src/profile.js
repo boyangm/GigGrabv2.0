@@ -14,18 +14,19 @@ class Profile extends Component {
 
 
     }
-
+    // move back to login page
     redirectToTarget = () => {
         this.props.history.push('/login');
     }
 
+    // handles state change
     handleChange = (event) => {
         const { name, value } = event.target;
-            this.setState({ [name]: value })
+        this.setState({ [name]: value })
         return console.log(this.state);
     }
 
-
+    // handles the submit event and sends state to renderData
     handleSubmit = (event) => {
         event.preventDefault();
         const { name, password, instruments, image, email, bio } = this.state;
@@ -38,11 +39,16 @@ class Profile extends Component {
             image,
         }
         );
-        event.target.reset();
-        this.renderData({ name, password, instruments, image, email, bio })
+        if(this.ValidateEmail(email)){
+            this.renderData({ name, password, instruments, image, email, bio })
+
+        }
 
     }
 
+
+
+    //handles the select option part of the form
     handleInstrumentChange = (event) => {
         const instrument = event.target.value;
         const prevState = this.state.instruments;
@@ -66,7 +72,7 @@ class Profile extends Component {
 
         }
     };
-
+    // stores image to filestack
     getImage = (event) => {
         const files = event.target.files;
         const file = files.item(0);
@@ -82,6 +88,14 @@ class Profile extends Component {
             });
     }
 
+    ValidateEmail = (mail) => {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return (true)
+        }
+        this.setState({message:"You have entered an invalid email address!"})
+        return (false)
+    }
+    // send data to the backend
     renderData = data => {
         fetch('/api/users', {
             method: 'POST',
@@ -90,25 +104,25 @@ class Profile extends Component {
             },
             body: JSON.stringify(data)
         }).then(res => res.json())
-        .then( data =>{
-            if (!data.message){
-                console.log(data);
-                this.setState({
-                    name: '',
-                    email: '',
-                    password: '',
-                    instruments: [],
-                    image: '',
-                    bio: ''
-                })
-                this.redirectToTarget();
-            }
-            this.setState({message:data.message})
-            console.log(data.message);
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(data => {
+                if (!data.message) {
+                    console.log(data);
+                    this.setState({
+                        name: '',
+                        email: '',
+                        password: '',
+                        instruments: [],
+                        image: '',
+                        bio: ''
+                    })
+                    this.redirectToTarget();
+                }
+                this.setState({ message: data.message })
+                console.log(data.message);
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
 
@@ -123,7 +137,7 @@ class Profile extends Component {
                     <input onChange={this.handleChange} value={this.state.name} type='text' name='name' />
                     <label for="password">Password:</label>
                     <input onChange={this.handleChange} value={this.state.password} type='text' name='password' />
-                    <p style = {{color:'red'}}>{this.state.message}</p>
+                    <p style={{ color: 'red' }}>{this.state.message}</p>
                     <label for="email">Email:</label>
                     <input onChange={this.handleChange} value={this.state.email} type='text' name='email' />
                     <label for="proImage">Profile Image:</label>
@@ -131,7 +145,7 @@ class Profile extends Component {
                     <label for="bio">Bio:</label>
                     <textarea onChange={this.handleChange} value={this.state.bio} name='bio' />
                     <label for="start">Instrument:</label>
-                    <select className="instrumentbox"  multiple={true} value={this.state.instruments} onChange={this.handleInstrumentChange}>
+                    <select className="instrumentbox" multiple={true} value={this.state.instruments} onChange={this.handleInstrumentChange}>
                         <option value="Guitar">Guitar</option>
                         <option value="Bass">Bass</option>
                         <option value="Drums">Drums</option>

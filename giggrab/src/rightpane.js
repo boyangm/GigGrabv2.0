@@ -13,7 +13,7 @@ const RightPane = (props) => {
                         <div className='rightCont'>
                             <h5 className='rightTitle'>{data.title}</h5>
                             <h5 className='rightAmount'>{`$${data.moneyPaid}`}</h5>
-                            <h5 className='rightdate'>{data.date}</h5>
+                            <h5 className='rightdate'>{context.actions.formatDate(data.date)}</h5>
                             <div className='buttonCont'>
                                 <button className = 'viewbutton' onClick={() => context.actions.grabgig(data._id)} id={data._id} >Grab Gig!</button>
                             </div>

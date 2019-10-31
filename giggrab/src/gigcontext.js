@@ -30,7 +30,7 @@ export class Provider extends Component {
             })
 
     }
-    
+
     // grabs all the gigs from the  DB
     fetchGigs = () => {
         fetch('/api/gigs')
@@ -59,7 +59,7 @@ export class Provider extends Component {
             })
     }
 
-// if there is a token in local storage auth will be true and the local user will update to what is in the token
+    // if there is a token in local storage auth will be true and the local user will update to what is in the token
     authLogin = (data) => {
         console.log('made it')
         fetch('api/login', {
@@ -75,8 +75,13 @@ export class Provider extends Component {
         })
 
     }
+    formatDate = (date) => {
+        var date = new Date(date);
+        return date.toDateString();
 
-    grabgig = (id) =>{
+    }
+
+    grabgig = (id) => {
         const data = {
             memberId: [this.state.localUser._id],
             gigId: [id]
@@ -88,17 +93,17 @@ export class Provider extends Component {
             },
             body: JSON.stringify(data)
         }).then(res => {
-           res.json()
-        }).then(post =>{
+            res.json()
+        }).then(post => {
             console.log(post);
-            this.updateMember(data,id)
+            this.updateMember(data, id)
         })
-        .catch(err => {
-            console.log(err)
-        })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
-    updateMember = (data) =>{
+    updateMember = (data) => {
         fetch(`api/users/gigs/${data.memberId}`, {
             method: 'PUT',
             headers: {
@@ -106,13 +111,13 @@ export class Provider extends Component {
             },
             body: JSON.stringify(data)
         }).then(res => {
-           res.json()
-        }).then(data =>{
+            res.json()
+        }).then(data => {
             console.log(data);
         })
-        .catch(err => {
-            console.log(err)
-        })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
     componentDidMount() {
@@ -147,7 +152,8 @@ export class Provider extends Component {
                     fetchGigs: this.fetchGigs,
                     fetchUsers: this.fetchUsers,
                     getgig: this.fetchOneGig,
-                    grabgig: this.grabgig
+                    grabgig: this.grabgig,
+                    formatDate: this.formatDate
                 }
 
             }}>
