@@ -63,10 +63,10 @@ class Landing extends Component {
                 <h3 className = "landingSubTitle">WHERE MUSICIANS EARN</h3>
                 <form >
                 <p className = "landingLabel">{this.state.message}</p>
-                <label className = "landingLabel" for = "email"> Email:</label>
+                <label className = "landingLabel" > Email:</label>
                 <input name = "email" type = "input" onChange = {this.handlevaluechange} value = {this.state.email} ></input>
-                <label className = "landingLabel" for = "password"> Password:</label>
-                <input type = "password" name = "password" onChange = {this.handlevaluechange} value = {this.state.password}></input>
+                <label className = "landingLabel" > Password:</label>
+                <input type = "password"  name = "password" onChange = {this.handlevaluechange} value = {this.state.password}></input>
                 <br></br>
                 <button onClick ={this.handleSubmit}>Log In!</button>
                 <Link to = "/signup"><button>Sign Up!</button> </Link>

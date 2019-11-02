@@ -21,6 +21,7 @@ export class Provider extends Component {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if(!data) return
                 return this.setState({ users: data })
             })
             .catch(err => {
