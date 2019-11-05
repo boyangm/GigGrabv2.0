@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom';
+import { getJwt } from './helpers/jwt'
 import { Consumer } from './gigcontext';
 
 class Landing extends Component {
@@ -14,7 +15,7 @@ class Landing extends Component {
         this.setState({[name]: value});
         console.log(this.state)
     }
-    handleSubmit = (e) =>{
+    handleSubmit = (e, cb) =>{
        e.preventDefault();
        const data = {
            email: this.state.email,
@@ -32,18 +33,12 @@ class Landing extends Component {
             if (data.message){
                 this.setState({message: data.message})
                 console.log(data.message)
-
+                
             }else{
-
-                localStorage.setItem('token',JSON.stringify(data));   
-                this.setState({
-                    email: '',
-                    password: '',
-                    message: ''
-                })  
-                this.props.history.push('/home')              
-                console.log(data);
-
+                
+                localStorage.setItem('token',JSON.stringify(data));  
+                let change = cb() 
+                change = true? this.props.history.push('/home'): null
             }
         })
            .catch(err => {
@@ -51,6 +46,17 @@ class Landing extends Component {
            })
           
     }
+    // componentDidMount(){
+    //     const jwt = getJwt();
+    //     if (jwt) {
+            
+
+    //     } else {
+
+    //         localStorage.removeItem('token')
+    //     }   
+
+    // }
  
 
     render(){
@@ -68,7 +74,7 @@ class Landing extends Component {
                 <label className = "landingLabel" for = "password"> Password:</label>
                 <input type = "password" name = "password" onChange = {this.handlevaluechange} value = {this.state.password}></input>
                 <br></br>
-                <button onClick ={this.handleSubmit}>Log In!</button>
+                <button onClick ={(e) =>this.handleSubmit(e,context.actions.authy)}>Log In!</button>
                 <Link to = "/signup"><button>Sign Up!</button> </Link>
                 </form>
             </div>

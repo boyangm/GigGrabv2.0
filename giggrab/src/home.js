@@ -11,7 +11,7 @@ const Home = (props) =>{
             {({state,actions}) =>
                 <div>
                     {
-                    (state.isAuth ='true')
+                    (state.isAuth)
                     ?(<div className = 'homeCont'>
 
                         <LeftPane   data = {state.localUser}></LeftPane>
