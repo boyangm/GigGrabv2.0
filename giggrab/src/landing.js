@@ -46,17 +46,6 @@ class Landing extends Component {
            })
           
     }
-    // componentDidMount(){
-    //     const jwt = getJwt();
-    //     if (jwt) {
-            
-
-    //     } else {
-
-    //         localStorage.removeItem('token')
-    //     }   
-
-    // }
  
 
     render(){

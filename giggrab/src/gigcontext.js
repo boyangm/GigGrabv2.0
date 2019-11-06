@@ -85,8 +85,9 @@ export class Provider extends Component {
 
     //is suthorized
     authy = () =>{
-        this.setState({isAuth: true})
-        alert('made it')
+        const jwt = getJwt();
+        this.setState({isAuth: true,
+            localUser: JSON.parse(jwt)})
         
         return true
 
@@ -153,16 +154,12 @@ export class Provider extends Component {
                 localUser: undefined,
 
             })
-            localStorage.removeItem('token')
         }
         this.fetchUsers();
         this.fetchGigs();
-        // this.setState({
-        //     localUser: JSON.parse(jwt),
-        //     isAuth: true
 
-        // })
     }
+   
 
     render() {
         return (

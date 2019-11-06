@@ -7,7 +7,7 @@ const TalentPool  = (props) =>{
     return(
         <Consumer>
             {context =>
-            (context.state.isAuth)
+            context.state.isAuth
             ?(
                 <div className= 'poolCont'>
                 {context.state.users.map(item =>

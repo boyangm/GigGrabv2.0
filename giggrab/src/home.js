@@ -13,7 +13,7 @@ const Home = (props) =>{
                     {
                     (state.isAuth)
                     ?(<div className = 'homeCont'>
-
+                        
                         <LeftPane   data = {state.localUser}></LeftPane>
                         <MiddlePane  data = {state.gigs} actions ={actions}></MiddlePane>
                         <RightPane  data ={state.viewgig}></RightPane>
