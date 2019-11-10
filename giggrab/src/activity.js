@@ -16,7 +16,7 @@ const Activity = (props) =>{
         <div>
         <Route exact to = {`${match.path}/employed`} component = {GigsEmployed} />
         <Route exact to = {`${match.path}/employing`} component= {GigsEmploying} />
-        {/* <Route exact to = '/' render = {()=> <Redirect to = {`${match.path}/employed`}/>} /> */}
+        <Route exact to = '/' render = {()=> <Redirect to = {`${match.path}/employed`}/>} />
         </div>
         </div>
         
