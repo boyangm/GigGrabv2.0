@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import {Consumer} from './gigcontext'
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Consumer } from './gigcontext'
+import { Link } from 'react-router-dom'
 
-class GigCard extends Component{
-    state ={
+class GigCard extends Component {
+    state = {
         gig: '0',
         players: []
     }
@@ -19,47 +19,47 @@ class GigCard extends Component{
             })
     }
 
-    fetchOneUser = (id) =>{
-            fetch(`api//users/${id}`)
+    fetchOneUser = (id) => {
+        fetch(`api//users/${id}`)
             .then(res => res.json())
-            .then(data => this.setState(prevState => ({players:[...prevState.players,data]})))
+            .then(data => this.setState(prevState => ({ players: [...prevState.players, data] })))
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
         this.fetchOneGig(this.props.data)
     }
 
-    render(){
-        return(
-                <Consumer>
-                    {context =>
-                    
-                <div className ='activityCard'>
-                <div className = 'activityTitle'>
-                <h3 >{this.state.gig.title}</h3>
-                <h3 >{context.actions.formatDate(this.state.gig.date)}</h3>
-                </div>
-                {this.state.players.map(member =>(
-                   <div className = 'bandArea'>
-                   <div className ='memberSlot'>
-                    <h5 className ='bandName'>{member.name}</h5>
-                   <Link to ={`/user/${member._id}`}><img className ='bandPic' src ={member.image}/></Link>
-                   <h5>{member.instruments[0]}</h5>
+    render() {
+        return (
+            <Consumer>
+                {context =>
 
-                   </div>
-                   </div>
-                    
+                    <div className='activityCard'>
+                        <div className='activityTitle'>
+                            <h3 >{this.state.gig.title}</h3>
+                            <h3 >{context.actions.formatDate(this.state.gig.date)}</h3>
+                        </div>
+                        {this.state.players.map(member => (
+                            <div className='bandArea'>
+                                <div className='memberSlot'>
+                                    <h5 className='bandName'>{member.name}</h5>
+                                    <Link to={`/user/${member._id}`}><img className='bandPic' src={member.image} /></Link>
+                                    <h5>{member.instruments[0]}</h5>
 
-                ))}
-                </div>
-                    
-                    }
-                </Consumer>
+                                </div>
+                            </div>
+
+
+                        ))}
+                    </div>
+
+                }
+            </Consumer>
 
         )
-        
-            
+
+
 
     }
 }

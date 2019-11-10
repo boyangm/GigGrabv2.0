@@ -1,44 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react'
+import {NavLink, Route, Redirect} from 'react-router-dom'
 import {Consumer} from './gigcontext'
-import {Link} from 'react-router-dom'
-import GigCard from './gigcard'
-class Activity extends Component{
-    state ={
-        gigs: []
-    }
+import GigsEmployed from './gigsemployed'
+import GigsEmploying from './gigsemploying'
 
 
-    fetchOneGig = (id) => {
-        fetch(`api/gigs/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                this.setState( prevState =>({ gigs: [...prevState,data] }))
-                console.log(this.state.viewgig);
-                return data;
-            })
-    }
+const Activity = (props) =>{
+    const {match} = props;
+    return(
+    <Consumer>
+    {
+        context =>
+        context.state.isAuth || context.state.localUser
+        ?(
+        <>
+        <NavLink  to  = {`${match.url}/employed`}> Gigs Employed</NavLink>
+        <NavLink  to  = {`${match.url}/employing`}> Gigs Employing</NavLink>
 
-    render(){
-          
-        return(
-            <Consumer>
-                { context =>
-                    context.state.isAuth && context.state.localUser
-                    ?(
-                        <div className = 'activityBoard'>
-                        {context.state.localUser.gigsEmployed.map(gig =>
-                          <GigCard key = {gig._id} data={gig}></GigCard>
-                        
-                        )}
-    
-                        </div>
-                    )
-                    : this.props.history.push('/login')
-    
-                }
-            </Consumer>
+        <Route exact to = {`${match.path}/employed`} component= {GigsEmployed} />
+        <Route exact to = {`${match.path}/employing`} component= {GigsEmploying} />
+        <Route exact to = '/' render = {()=> <Redirect to = {`${match.path}/employed`}/>} />
+        </>
         )
-    }
-}
+        : <Redirect to = "/login"/>
 
-export default Activity 
+    }
+
+    </Consumer>    
+    )
+}
+export default Activity

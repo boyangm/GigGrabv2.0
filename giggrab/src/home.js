@@ -11,12 +11,12 @@ const Home = (props) =>{
             {({state,actions}) =>
                 <div>
                     {
-                    (state.isAuth)
+                    state.isAuth || state.localUser
                     ?(<div className = 'homeCont'>
                         
-                        <LeftPane   data = {state.localUser}></LeftPane>
-                        <MiddlePane  data = {state.gigs} actions ={actions}></MiddlePane>
-                        <RightPane  data ={state.viewgig}></RightPane>
+                        <LeftPane data = {state.localUser}></LeftPane>
+                        <MiddlePane data = {state.gigs} actions ={actions}></MiddlePane>
+                        <RightPane data ={state.viewgig}></RightPane>
 
                     </div>)
                     : props.history.push('/login')
