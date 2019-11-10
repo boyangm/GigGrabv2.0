@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getJwt } from './helpers/jwt'
+import {Redirect} from 'react-router-dom'
 
 
 const GigsContext = React.createContext();
@@ -13,7 +14,8 @@ export class Provider extends Component {
         data: this.data,
         isAuth: false,
         gigs: [],
-        viewgig: ''
+        viewgig: '',
+        
     }
     // grabs all the users from DB
     fetchUsers = () => {
@@ -82,6 +84,19 @@ export class Provider extends Component {
 
     }
 
+    //is suthorized
+    authy = () =>{
+        const jwt = getJwt();
+        this.setState({isAuth: true,
+            localUser: JSON.parse(jwt)})
+        
+        return true
+
+        
+
+    }
+
+
     grabgig = (id) => {
         const data = {
             memberId: [this.state.localUser._id],
@@ -102,6 +117,12 @@ export class Provider extends Component {
             .catch(err => {
                 console.log(err)
             })
+
+    }
+    logout = () =>{
+        localStorage.removeItem('token')
+        console.log('made it')
+        this.setState({isAuth: false})
 
     }
     updateMember = (data) => {
@@ -126,23 +147,20 @@ export class Provider extends Component {
         if (jwt) {
             this.setState({
                 localUser: JSON.parse(jwt),
-                isAuth: true
             })
+            
 
         } else {
             this.setState({
                 localUser: undefined,
-                isAuth: false
+
             })
         }
         this.fetchUsers();
         this.fetchGigs();
-        this.setState({
-            localUser: JSON.parse(jwt),
-            isAuth: true
 
-        })
     }
+   
 
     render() {
         return (
@@ -154,7 +172,9 @@ export class Provider extends Component {
                     fetchUsers: this.fetchUsers,
                     getgig: this.fetchOneGig,
                     grabgig: this.grabgig,
-                    formatDate: this.formatDate
+                    formatDate: this.formatDate,
+                    authy: this.authy,
+                    logut: this.logout
                 }
 
             }}>
