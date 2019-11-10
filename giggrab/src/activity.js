@@ -8,25 +8,18 @@ import GigsEmploying from './gigsemploying'
 const Activity = (props) =>{
     const {match} = props;
     return(
-    <Consumer>
-    {
-        context =>
-        context.state.isAuth || context.state.localUser
-        ?(
-        <>
+        <div>
+        <div>
         <NavLink  to  = {`${match.url}/employed`}> Gigs Employed</NavLink>
         <NavLink  to  = {`${match.url}/employing`}> Gigs Employing</NavLink>
-
-        <Route exact to = {`${match.path}/employed`} component= {GigsEmployed} />
+        </div>
+        <div>
+        <Route exact to = {`${match.path}/employed`} component = {GigsEmployed} />
         <Route exact to = {`${match.path}/employing`} component= {GigsEmploying} />
-        <Route exact to = '/' render = {()=> <Redirect to = {`${match.path}/employed`}/>} />
-        </>
-        )
-        : <Redirect to = "/login"/>
-
-    }
-
-    </Consumer>    
+        {/* <Route exact to = '/' render = {()=> <Redirect to = {`${match.path}/employed`}/>} /> */}
+        </div>
+        </div>
+        
     )
 }
 export default Activity
