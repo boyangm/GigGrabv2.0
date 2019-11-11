@@ -12,7 +12,7 @@ export class Provider extends Component {
         localUser: undefined,
         users: [],
         data: this.data,
-        isAuth: false,
+        isAuth: undefined,
         gigs: [],
         viewgig: '',
         
@@ -146,6 +146,7 @@ export class Provider extends Component {
         const jwt = getJwt();
         if (jwt) {
             this.setState({
+                isAuth:true,
                 localUser: JSON.parse(jwt),
             })
             

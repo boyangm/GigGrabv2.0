@@ -11,7 +11,7 @@ const GigsEmployed = (props) => {
                     ?(
                         <div className = 'activityBoard'>
                         {context.state.localUser.gigsEmployed.map(gig =>
-                          <GigCard key = {gig._id} data={gig}></GigCard>
+                          <GigCard key = {gig} data={gig}></GigCard>
                         
                         )}
     

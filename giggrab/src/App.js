@@ -12,20 +12,21 @@ import Logout from './logout'
 
 
 
+
 function App() {
   return (
     <BrowserRouter>
     <Navbar></Navbar>
       <Switch>
         <Route exact path = "/" render = {() => <Redirect to = "/login"/>}/>
-        <Route exact path = "/login" component = {Landing}/>
-        <Route exact path = "/logout" component = {Logout}/>
+        <Route path = "/login" component = {Landing}/>
+        <Route path = "/logout" component = {Logout}/>
       
-        <Route exact path = "/signup" component = {Profile}/>
-        <Route exact path = "/activity" component = {Activity}/>
-        <Route exact path = "/home" component = {Home}/>
-        <Route exact path = "/giftgig" component = {Giftgig}/>
-        <Route exact path = "/talentpool" component = {TalentPool}/>
+        <Route path = "/signup" component = {Profile}/>
+        <Route path = "/activity" component = {Activity}/>
+        <Route path = "/home" component = {Home}/>
+        <Route path = "/giftgig" component = {Giftgig}/>
+        <Route path = "/talentpool" component = {TalentPool}/>
 
 
       </Switch>

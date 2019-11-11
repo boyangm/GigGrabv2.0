@@ -8,18 +8,15 @@ import GigsEmploying from './gigsemploying'
 const Activity = (props) =>{
     const {match} = props;
     return(
-        <div>
-        <div>
-        <NavLink  to  = {`${match.url}/employed`}> Gigs Employed</NavLink>
-        <NavLink  to  = {`${match.url}/employing`}> Gigs Employing</NavLink>
-        </div>
-        <div>
-        <Route exact to = {`${match.path}/employed`} component = {GigsEmployed} />
-        <Route exact to = {`${match.path}/employing`} component= {GigsEmploying} />
-        <Route exact to = '/' render = {()=> <Redirect to = {`${match.path}/employed`}/>} />
-        </div>
-        </div>
-        
+      <div>
+        <ul>
+            <li><NavLink to = {`${match.url}/employed`}>Gigs employed</NavLink> </li>
+            <li><NavLink to = {`${match.url}/employing`}>Gigs employing</NavLink> </li>
+        </ul>
+        <Route exact path={match.path} render = {() => <Redirect to ={`${match.path}/employed`}/>}/>
+        <Route path= {`${match.path}/employed`} component = {GigsEmployed}/>
+        <Route path= {`${match.path}/employing`} component = {GigsEmploying}/>
+      </div>
     )
 }
 export default Activity
