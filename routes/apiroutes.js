@@ -15,6 +15,9 @@ router.route('/users/:id')
  router.route('/users/gigs/:id')
     .put(userController.updateGigs)
 
+ router.route('/users/giftgigs/:id')
+    .put(userController.updateGigsHosted)
+
 router.post('/login',userController.login)
 
 router.route('/gigs')

@@ -108,9 +108,8 @@ export class Provider extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(res => {
-            res.json()
-        }).then(post => {
+        }).then(res => res.json())
+        .then(post => {
             console.log(post);
             this.updateMember(data, id)
         })

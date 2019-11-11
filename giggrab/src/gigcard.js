@@ -9,7 +9,7 @@ class GigCard extends Component {
     }
 
     fetchOneGig = (id) => {
-        fetch(`api/gigs/${id}`)
+        fetch(`/api/gigs/${id}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ gig: data })
@@ -20,7 +20,7 @@ class GigCard extends Component {
     }
 
     fetchOneUser = (id) => {
-        fetch(`api//users/${id}`)
+        fetch(`/api//users/${id}`)
             .then(res => res.json())
             .then(data => this.setState(prevState => ({ players: [...prevState.players, data] })))
     }

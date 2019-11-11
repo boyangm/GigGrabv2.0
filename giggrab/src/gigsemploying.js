@@ -7,7 +7,7 @@ const GigsEmploying = (props) => {
         return(
             <Consumer>
                 { context =>
-                    context.state.isAuth || context.state.localUser
+                    context.state.isAuth && context.state.localUser
                     ?(
                         <div className = 'activityBoard'>
                         {context.state.localUser.gigsHosted.map(gig =>

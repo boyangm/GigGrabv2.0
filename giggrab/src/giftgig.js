@@ -76,6 +76,23 @@ class Giftgig extends Component {
     };
 
 
+    updateMember = (author, id) => {
+        fetch(`api/users/giftgigs/${author}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({memberId: id})
+        }).then(res => {
+            res.json()
+        }).then(data => {
+            console.log(data);
+            return true
+        })
+            .catch(err => {
+                console.log(err)
+            })
+        }
 
 
     renderData = data => {
@@ -85,21 +102,24 @@ class Giftgig extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(res => {
+        }).then(res => res.json())
+        .then(data =>{
+          this.updateMember(this.state.author, data._id)
+            console.log(data);
+                this.setState({
+                    title: '',
+                    instruments: [],
+                    location: '',
+                    description: '',
+                    moneyPaid: '',
+                    author: '',
+                    date: ''
+                })
+                this.redirectToTarget();
+
             
-            this.setState({
-                title: '',
-                instruments: [],
-                location: '',
-                description: '',
-                moneyPaid: '',
-                author: '',
-                date: ''
-            })
-               this.redirectToTarget();
-
-
-        }).catch(err => {
+        })
+        .catch(err => {
             console.log(err)
         })
 
