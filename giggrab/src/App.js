@@ -7,6 +7,7 @@ import Navbar from './navbar'
 import Giftgig from './giftgig'
 import Landing from './landing'
 import TalentPool from './talentpool'
+import User from './user'
 import Activity from './activity'
 import Logout from './logout'
 
@@ -27,6 +28,7 @@ function App() {
         <Route path = "/home" component = {Home}/>
         <Route path = "/giftgig" component = {Giftgig}/>
         <Route path = "/talentpool" component = {TalentPool}/>
+        <Route path = "/users/:id" component = {User}/>
 
 
       </Switch>

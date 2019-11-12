@@ -13,9 +13,22 @@ class GigCard extends Component {
             .then(res => res.json())
             .then(data => {
                 this.setState({ gig: data })
-                data.gigsMates.map(id => this.fetchOneUser(id))
-                console.log(this.state.gig);
-                return data;
+                if(data.gigsMates !== undefined){
+                    data.gigsMates.map(id => this.fetchOneUser(id))
+                    console.log(this.state.gig);
+                    return data;
+
+                }else{
+                    this.setState({
+                        
+                            name: '?',
+                            _id: '#',
+                            image: 'https://electric-objects-web-production-attachments.imgix.net/artworks/preview_images/000/008/186/original/a6d8f750a88bb4abf11192012c4fdaed/Screen_Shot_2015-07-18_at_10.55.18_AM.png?ixlib=rb-0.3.5&fm=jpg&dpr=1&w=1080&h=1920&bg=000&fit=crop&lossless=false&s=1e9964ca6befb1b5972fabe342950f71',
+                            instruments:['?'] 
+                        
+                    })
+                    return data
+                }
             })
     }
 

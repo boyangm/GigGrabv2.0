@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { getJwt } from './helpers/jwt'
 import {Redirect} from 'react-router-dom'
 
 
-const GigsContext = React.createContext();
+export const GigsContext = React.createContext();
 
 export class Provider extends Component {
 
@@ -15,8 +15,10 @@ export class Provider extends Component {
         isAuth: undefined,
         gigs: [],
         viewgig: '',
+        profile: {}
         
     }
+ 
     // grabs all the users from DB
     fetchUsers = () => {
         fetch('/api/users')
@@ -34,6 +36,8 @@ export class Provider extends Component {
 
     }
 
+
+    
     // grabs all the gigs from the  DB
     fetchGigs = () => {
         fetch('/api/gigs')
@@ -50,6 +54,11 @@ export class Provider extends Component {
 
     }
 
+    fetchOneUser = (id) => {
+        fetch(`/api//users/${id}`)
+            .then(res => res.json())
+            .then(data => this.setState({profile: data}))
+    }
 
     // fetches one gig from the DB
     fetchOneGig = (id) => {
@@ -174,7 +183,8 @@ export class Provider extends Component {
                     grabgig: this.grabgig,
                     formatDate: this.formatDate,
                     authy: this.authy,
-                    logut: this.logout
+                    logut: this.logout,
+                    fetchOneUser: this.fetchOneUser
                 }
 
             }}>
