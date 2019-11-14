@@ -1,29 +1,45 @@
-.landingCont{
+.landingCont, .profileCont{
     @include default(100vh);
+    width: 95% !important;
     background: url('https://www.tokkoro.com/picsup/3106425-audience_band_concert_crowd_lights_music_musical-instruments_musician_musicians_party_people_performance_singer_smoke_spotlights_stage.jpg') center no-repeat;
     background-size: cover;
     padding-top: 10px;
-    background-color: lighten($base,50%);
+    background-color: $base;
     background-blend-mode: multiply;
     text-align: center;
+    padding: 2rem;
+
     .landingTitle{
-        color: $compliment-light;
+        color: transparent;
+        -webkit-text-stroke-width: .5px;
+        -webkit-text-stroke-color: $compliment-light;
         font-size: 5rem;
         letter-spacing: .7rem;
-        margin: 10% auto 0;
+        margin: 15% auto 0;
+        font-family: 'Aldrich', sans-serif;
     }
     .landingSubTitle{
-        font-size: 3rem;
+        font-size: 2rem;
         letter-spacing: .7rem;
         color: $compliment-light;
+        padding: 1rem;
+        font-family: 'Aldrich', sans-serif;
     }
-    form{
-        margin-top: 150px;
+    .createProf {
+        color: $compliment-light;
+        padding: 1rem;
+        font-family: 'Aldrich', sans-serif;
+        padding-top: 80px;
+    }
+    label {
+        color: $compliment-light;
     }
     .landingLabel{
         color: lighten($compliment-light,10%);
         font-weight: bold;
         font-size: 1.5rem;
+        display: block;
+        padding-bottom: 10px;
     }
     input{
         
@@ -32,12 +48,37 @@
         margin: 10px;
         background: transparent;
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 12px;
         color: $compliment-light;
-
+        width: 97%;
     }
     button{
-        @include button($compliment-light, $base)
+        @include button($compliment-light, $base);
+        color: #0e0d0f;
+        border: none;
+        border: 1px solid $compliment-light;
+        transition: all .3s;
+        
+    }
+    button:hover {
+        color: $compliment-light;
+        background: transparent;
+        border: 1px solid $compliment-light;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    .email-login, .password-login{
+        display: inline-block;
+        width: fit-content
+    }
+}
+@media only screen and (max-width: 768px) {
+    form{
+        width: 80%;
+        margin: auto;
+    }
+    .landingCont, .profileCont {
+        margin-left: -6%;
     }
 
 }

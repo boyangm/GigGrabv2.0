@@ -2,6 +2,7 @@
 $base: #35325c;
 $compliment : complement($base);
 $compliment-light: lighten($compliment, 30%);
+$default-font: 'Aldrich', sans-serif;
 
 //fonts
 $mainFont: 'Cabin', sans-serif;

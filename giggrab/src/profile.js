@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import * as filestack from 'filestack-js';
 const client = filestack.init('AFeiQyudCRNK8T2g46sKFz');
 
@@ -131,7 +132,7 @@ class Profile extends Component {
 
         return (
             <div className="profileCont">
-                <h3>Create your Profile!</h3>
+                <h3 className = "createProf">Create Your Profile</h3>
                 <form onSubmit={this.handleSubmit} ref={(el) => this.myFormRef = el}>
                     <label for="name">Name:</label>
                     <input onChange={this.handleChange} value={this.state.name} type='text' name='name' />
@@ -154,8 +155,9 @@ class Profile extends Component {
                         <option value="Other">Other</option>
                     </select>
                     <h3>{this.state.instruments.map(item => `${item}, `)}</h3>
+                    <Link to = "/login"><button>Login!</button> </Link>                
                     <button type="submit">Submit</button>
-                </form>
+                    </form>
             </div>
         )
     }
