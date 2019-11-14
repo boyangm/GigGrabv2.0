@@ -5,14 +5,13 @@
     flex-flow: row wrap;
     width: 80%;
     justify-content: center;
-    border: 1px solid lightgray;
-    margin: 10px auto;
+    
     .cardBody{
         position: relative;
         border: 1px solid lightgray;
         text-align: center;
         height: 500px;
-        
+        margin-top: 90px;
         width: 25%;
         .cardImg{
             width:100%;
