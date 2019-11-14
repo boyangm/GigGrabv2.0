@@ -1,3 +1,7 @@
+.scrolled {
+    background-color: #0e0d0f !important;
+    transition: all .3s;
+}
 .navbar{
     position: relative;
     display: flex;
@@ -5,11 +9,16 @@
     height: auto;
     justify-content: space-between;
     flex-flow: row;
-    background: $base;
+    position: fixed;
+    z-index: 3;
+    background-color: transparent;
+    
         .title{
             @include nav(center);
-            margin-left: 15px;
+            margin-left: 25px;
             width: 50%;
+            font-size: 40px;
+            font-family: 'Aldrich', sans-serif;
             @media only screen and (max-width: 600px) {
                 font-size: .8rem;
                 width: 40px;
@@ -28,13 +37,18 @@
             align-self: center;
             width: 50%;
             margin: 0;
+            margin-right: 15px;
             .linkItems{
                 @include nav(center);
                 width: div(4);
                 text-decoration: none;
+                transition: all .2s;
                 &.active{
                     color: white;
                 }
+                &:hover {
+                color: #35325c ;
+            }
                 @media only screen and (max-width: 600px) {
                     font-size: .8rem;
                     margin: 0 10px;
@@ -51,7 +65,15 @@
         }
         @media only screen and (max-width: 600px) {
               font-size: .75rem;
+              padding-top: 15px;
 
+              .links {
+                  margin-right: 35px;
+              }
           }
+        @media only screen and (max-width: 833px) {
+
+        }
+
 
 };

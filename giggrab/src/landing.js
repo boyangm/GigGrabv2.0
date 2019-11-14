@@ -57,11 +57,15 @@ class Landing extends Component {
                 <h1 className = "landingTitle">GIG GRAB</h1>
                 <h3 className = "landingSubTitle">WHERE MUSICIANS EARN</h3>
                 <form >
-                <p className = "landingLabel">{this.state.message}</p>
-                <label className = "landingLabel" > Email:</label>
-                <input name = "email" type = "input" onChange = {this.handlevaluechange} value = {this.state.email} ></input>
-                <label className = "landingLabel" > Password:</label>
-                <input type = "password"  name = "password" onChange = {this.handlevaluechange} value = {this.state.password}></input>
+                    <p className = "landingLabel">{this.state.message}</p>
+                <div class="email-login">
+                    <label className = "landingLabel" > Email:</label>
+                    <input name = "email" type = "input" onChange = {this.handlevaluechange} value = {this.state.email} ></input>
+                </div>
+                <div class="password-login">
+                    <label className = "landingLabel" > Password:</label>
+                    <input type = "password"  name = "password" onChange = {this.handlevaluechange} value = {this.state.password}></input>
+                </div>
                 <br></br>
                 <button onClick ={(e) =>this.handleSubmit(e,context.actions.authy)}>Log In!</button>
                 <Link to = "/signup"><button>Sign Up!</button> </Link>
