@@ -8,7 +8,7 @@ import GigsEmploying from './gigsemploying'
 const Activity = (props) =>{
     const {match} = props;
     return(
-      <div>
+      <div className="activityCont">
         <ul>
             <li><NavLink to = {`${match.url}/employed`}>Gigs employed</NavLink> </li>
             <li><NavLink to = {`${match.url}/employing`}>Gigs employing</NavLink> </li>
