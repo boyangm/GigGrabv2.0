@@ -1,3 +1,4 @@
+
 .leftCont{
     position: -webkit-sticky;
     position: sticky;
@@ -6,10 +7,8 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    background: white;
-
-
     width: 100%;
+    color: $compliment-light;
     .proTitle{
         margin: 20px auto; 
 

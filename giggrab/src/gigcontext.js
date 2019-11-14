@@ -31,7 +31,7 @@ export class Provider extends Component {
             .catch(err => {
 
                 console.log(err)
-                this.props.history.push('/login')
+                //this.props.history.push('/login')
             })
 
     }

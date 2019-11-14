@@ -1,6 +1,6 @@
-.landingCont, .profileCont{
+.landingCont, .profileCont, .homeCont{
     @include default(100vh);
-    width: 95% !important;
+    width: 96% !important;
     background: url('https://www.tokkoro.com/picsup/3106425-audience_band_concert_crowd_lights_music_musical-instruments_musician_musicians_party_people_performance_singer_smoke_spotlights_stage.jpg') center no-repeat;
     background-size: cover;
     padding-top: 10px;
@@ -8,6 +8,8 @@
     background-blend-mode: multiply;
     text-align: center;
     padding: 2rem;
+    height: 120vh;
+    background-attachment: fixed;
 
     .landingTitle{
         color: transparent;
@@ -33,6 +35,11 @@
     }
     label {
         color: $compliment-light;
+        display: block;
+        padding: 10px 0px;
+    }
+    .profileCont {
+        height: 120vh !important;
     }
     .landingLabel{
         color: lighten($compliment-light,10%);
