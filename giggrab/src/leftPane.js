@@ -13,7 +13,7 @@ const LeftPane = (props) =>{
              data && 
              (
                  <div className = "leftCont">
-                 <h3 className = "proTitle">welcome back {data.name} !</h3>
+                 <h3 className = "proTitle">Welcome Back {data.name}!</h3>
                  <img className= "profilePic" src = {data.image} alt ="profile"/>
                  <h4 className = "instruments">{data.instruments.map( item => `${item}, `)}</h4>
                  <h4 className = "rating">{` Rating: ${data.rating.$numberDecimal}`}</h4>
