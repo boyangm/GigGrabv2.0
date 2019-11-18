@@ -22,18 +22,33 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
+    const query = `$${req.body.action}: {gigsMates: ${req.body.memberId}}`
+      db.Gigs
+        .findOneAndUpdate({ _id: req.params.id }, {query},{ multi: true })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    
+  },
+  remove: function (req, res) {
     db.Gigs
-      .findOneAndUpdate({ _id: req.params.id }, { $push: { gigsMates: req.body.memberId } })
+      .deleteOne({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  remove: function (req, res) {
+  removeUser: function (req, res) {
+
     db.Gigs
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  close: function (req, res) {
+    db.Gigs
+      .findOneAndUpdate({ _id: req.params.id },{status: 'closed'})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
 
 
 }

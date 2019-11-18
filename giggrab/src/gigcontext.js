@@ -36,7 +36,6 @@ export class Provider extends Component {
 
     }
 
-
     
     // grabs all the gigs from the  DB
     fetchGigs = () => {
@@ -57,7 +56,14 @@ export class Provider extends Component {
     fetchOneUser = (id) => {
         fetch(`/api//users/${id}`)
             .then(res => res.json())
-            .then(data => this.setState({profile: data}))
+            .then(data => {
+                if (data._id === this.state.localUser._id){
+                    this.setState({localUser: data})
+                }else{
+
+                    this.setState({profile: data});
+                }
+            })
     }
 
     // fetches one gig from the DB
@@ -67,7 +73,7 @@ export class Provider extends Component {
             .then(data => {
                 this.setState({ viewgig: data })
                 console.log(this.state.viewgig);
-                return data;
+                return data
             })
     }
 
@@ -93,7 +99,7 @@ export class Provider extends Component {
 
     }
 
-    //is suthorized
+    //is authorized
     authy = () =>{
         const jwt = getJwt();
         this.setState({isAuth: true,
@@ -105,13 +111,23 @@ export class Provider extends Component {
 
     }
 
+    refetch = () =>{
+        this.fetchOneUser(this.state.localUser._id)
+       
 
-    grabgig = (id) => {
+    }
+
+    grabgig = (id) =>{
+        this.updateGig(id, this.state.localUser._id, 'push')
+    }
+
+    updateGig = (gigId , memberId , action) => {
         const data = {
-            memberId: [this.state.localUser._id],
-            gigId: [id]
+            gigId,
+            memberId,
+            action
         }
-        fetch(`api/gigs/${id}`, {
+        fetch(`api/gigs/${gigId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -120,12 +136,14 @@ export class Provider extends Component {
         }).then(res => res.json())
         .then(post => {
             console.log(post);
-            this.updateMember(data, id)
+            this.updateMember(data, gigId)
+            
+
         })
             .catch(err => {
                 console.log(err)
             })
-
+    
     }
     logout = () =>{
         localStorage.removeItem('token')
@@ -133,8 +151,13 @@ export class Provider extends Component {
         this.setState({isAuth: false})
 
     }
-    updateMember = (data) => {
-        fetch(`api/users/gigs/${data.memberId}`, {
+    updateMember = (gigId , memberId , action) => {
+        const data = {
+            gigId,
+            memberId,
+            action
+        }
+        fetch(`/api/users/gigs/${data.memberId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -143,7 +166,7 @@ export class Provider extends Component {
         }).then(res => {
             res.json()
         }).then(data => {
-            console.log(data);
+            this.refetch() 
         })
             .catch(err => {
                 console.log(err)
@@ -169,6 +192,8 @@ export class Provider extends Component {
         this.fetchGigs();
 
     }
+
+
    
 
     render() {
@@ -184,7 +209,9 @@ export class Provider extends Component {
                     formatDate: this.formatDate,
                     authy: this.authy,
                     logut: this.logout,
-                    fetchOneUser: this.fetchOneUser
+                    fetchOneUser: this.fetchOneUser,
+                    updateMember: this.updateMember,
+                    fetchGigs: this.fetchGigs
                 }
 
             }}>
