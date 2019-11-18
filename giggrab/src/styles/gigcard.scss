@@ -2,13 +2,16 @@
     position:relative;
     display: flex;
     flex-flow: row;
+    border-bottom: 1px solid lightgray;
     justify-content: space-around;
     height: 300px;
 
     width:100%;
     margin: 0 auto;
     .activityTitle{
-        width: 75%;
+        min-width: 33%;
+        max-width: 50%;
+        
     }
     .bandArea{
         position:relative;

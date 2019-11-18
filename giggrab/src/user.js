@@ -15,10 +15,10 @@ const User = ({match}) =>{
         
         <div>
             {isAuth
-            ?<div>
+            ?<div className = 'userCont'>
                 <img src = {profile.image}/>
                 <h5>{profile.name}</h5>
-                <h5>{profile.instrument}</h5>
+                <h5>{profile.instruments}</h5>
                 <div>
                 {
                     profile.gigsEmployed !== undefined

@@ -14,6 +14,7 @@ router.route('/users/:id')
 
  router.route('/users/gigs/:id')
     .put(userController.updateGigs)
+    .delete(userController.update)
 
  router.route('/users/giftgigs/:id')
     .put(userController.updateGigsHosted)
@@ -24,10 +25,13 @@ router.route('/gigs')
     .post(gigController.create)
     .get(gigController.findAll)
     .put(userController.update)
+    
+    
 
 router.route('/gigs/:id')
     .post(gigController.create)
     .get(gigController.findById)
     .put(gigController.update)
+    .delete(gigController.remove)
 
 module.exports = router;

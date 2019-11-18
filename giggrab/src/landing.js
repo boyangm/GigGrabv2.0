@@ -30,6 +30,7 @@ class Landing extends Component {
            }).then(res => res.json())
            .then(data => {
 
+           
             if (data.message){
                 this.setState({message: data.message})
                 console.log(data.message)

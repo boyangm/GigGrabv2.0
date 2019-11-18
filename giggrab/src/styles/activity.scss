@@ -10,7 +10,12 @@
 }
 ul{
     margin-top: 90px;
-    margin-left: -15%;
+    display: flex;
+    flex-flow: row;
+     li{
+         padding: 0 10px;
+     }
+
 }
 a {
     color: $compliment-light;

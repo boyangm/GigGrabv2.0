@@ -47,14 +47,21 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   updateGigs: function (req, res) {
+    const query = `$${req.body.action}: {gigsEmployed: ${req.body.gigId}}`
     db.User
-      .findOneAndUpdate({ _id: req.params.id }, { $push: { gigsEmployed: req.body.gigId } })
-      .then(dbModel => res.json(dbModel))
+      .findOneAndUpdate({ _id: req.params.id }, {query})
+      .then(dbModel =>{
+        console.log(`success at ${query}`)
+        console.log(dbModel)
+
+        res.json(dbModel)
+      } )
       .catch(err => res.status(422).json(err));
   },
   updateGigsHosted: function (req, res) {
+    const query = `$${req.body.action}: {gigsHosted: ${req.body.gigId}}`
     db.User
-      .findOneAndUpdate({ _id: req.params.id }, { $push: { gigsHosted: req.body.memberId } })
+      .findOneAndUpdate({ _id: req.params.id }, {query})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -75,7 +82,6 @@ module.exports = {
 
         console.log(dbModel)
         console.log(dbModel.password)
-
         if (hashpw === dbModel.password) {
           let token = jwt.sign(dbModel.email, 'grabbygig');
           res.cookie('token', token).json(dbModel);
