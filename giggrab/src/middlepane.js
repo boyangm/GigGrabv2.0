@@ -17,7 +17,7 @@ const MiddlePane = (props) => {
                             <h5 className='middledate'>{context.actions.formatDate(item.date)}</h5>
                             <div className='buttonCont'>
                                 <button onClick={() => context.actions.getgig(item._id)} id={item._id} className='gigbutton'>View Gig!</button>
-                                <Link to={`/${item.author}`}><button className='gigbutton' >View Profile</button></Link>
+                                <Link to={`/users/${item.author}`}><button className='gigbutton' >View Profile</button></Link>
 
                             </div>
                         </div>

@@ -76,13 +76,13 @@ class Giftgig extends Component {
     };
 
 
-    updateMember = (author, id) => {
+    updateMember = (author, id , action = 'push') => {
         fetch(`api/users/giftgigs/${author}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({memberId: id})
+            body: JSON.stringify({gigId: id , action})
         }).then(res => {
             res.json()
         }).then(data => {

@@ -47,9 +47,23 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   updateGigs: function (req, res) {
+    const {action, gigId } = req.body
     const query = `$${req.body.action}: {gigsEmployed: ${req.body.gigId}}`
-    db.User
-      .findOneAndUpdate({ _id: req.params.id }, {query})
+    if(action === 'push'){
+      db.User
+        .findOneAndUpdate({ _id: req.params.id }, {$push: {gigsEmployed: gigId}})
+        .then(dbModel =>{
+          console.log(`success at ${query}`)
+          console.log(dbModel)
+  
+          res.json(dbModel)
+        } )
+        .catch(err => res.status(422).json(err));
+
+    }else{
+
+      db.User
+      .findOneAndUpdate({ _id: req.params.id }, {$pull: {gigsEmployed: gigId}})
       .then(dbModel =>{
         console.log(`success at ${query}`)
         console.log(dbModel)
@@ -57,13 +71,22 @@ module.exports = {
         res.json(dbModel)
       } )
       .catch(err => res.status(422).json(err));
+    }
   },
   updateGigsHosted: function (req, res) {
     const query = `$${req.body.action}: {gigsHosted: ${req.body.gigId}}`
-    db.User
-      .findOneAndUpdate({ _id: req.params.id }, {query})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    if(req.body.action === 'push'){
+      db.User
+        .findOneAndUpdate({ _id: req.params.id },{$push: {gigsHosted: req.body.gigId}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+
+    }else{
+      db.User
+        .findOneAndUpdate({ _id: req.params.id },{$pull: {gigsHosted: req.body.gigId}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    }
   },
   remove: function (req, res) {
     db.User
