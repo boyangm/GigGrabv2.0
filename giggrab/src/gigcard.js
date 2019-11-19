@@ -26,16 +26,28 @@ class GigCard extends Component {
     }
 
 
-    removeGig = (e, cb) => {
+    removeGig = (e, cb , action = 'close') => {
         e.preventDefault();
+        if (action === 'delete'){
         this.state.players.map(player => {
 
             let gigId = this.state.gig._id;
             let action = 'pull'
             let memberId = player._id
+        
             cb(gigId, memberId, action)
         })
-        return this.deleteGig(this.state.gig._id)
+        
+            return this.deleteGig(this.state.gig._id)
+
+        }else{
+            let gigId = this.state.gig._id;
+            let action = 'pull'
+            let memberId = this.props.userId
+            cb(gigId, memberId, action)
+
+            return console.log('success')
+        }
 
     }
 
@@ -84,8 +96,14 @@ class GigCard extends Component {
                         <div className='activityTitle'>
                             <h3 >{this.state.gig.title}</h3>
                             <h3 >{context.actions.formatDate(this.state.gig.date)}</h3>
-                            <button name={this.state.gig._id} onClick={this.removeGig}>Close Gig</button>
-                            <button name={this.state.gig._id} onClick={(e) => this.removeGig(e, context.actions.updateMember)}>Delete Gig</button>
+                            <button name={this.state.gig._id} onClick={(e) =>this.removeGig(e, context.actions.updateGig)}>Close Gig</button>
+                            {this.props.info
+                                ?(
+                                    <button name={this.state.gig._id} onClick={(e) => this.removeGig(e, context.actions.updateGig, 'delete')}>Delete Gig</button>
+
+                                )
+                                :null
+                            }
                         </div>
                         {this.state.players.map(member => (
                             <div className='bandArea'>

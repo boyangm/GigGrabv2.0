@@ -1,4 +1,4 @@
-import React , {useContext, useEffect} from 'react'
+import React , {useContext, useState, useEffect} from 'react'
 import {GigsContext} from './gigcontext'
 
 
@@ -7,32 +7,36 @@ const User = ({match}) =>{
     const context = useContext(GigsContext)
     const {profile, isAuth} = context.state;
     const {fetchOneUser} = context.actions;
+    const[localProfile, setLocalProfile] = useState({})
     console.log(profile)
     useEffect(()=>{
-        fetchOneUser(id)
+        fetch(`/api/users/${id}`)
+        .then(res => res.json())
+        .then(data => setLocalProfile(data))
+        .catch(err => console.log(err))
     }, [])
     return(
         
         <div>
             {isAuth
             ?<div className = 'userCont'>
-                <img src = {profile.image}/>
-                <h5>{profile.name}</h5>
-                <h5>{profile.instruments}</h5>
+                <img src = {localProfile.image}/>
+                <h5>{localProfile.name}</h5>
+                <h5>{localProfile.instruments}</h5>
                 <div>
                 {
-                    profile.gigsEmployed !== undefined
+                    localProfile.gigsEmployed !== undefined
     
-                    ?<p>{`${profile.gigsEmployed.length} Gigs Grabbed`}</p>
+                    ?<p>{`${localProfile.gigsEmployed.length} Gigs Grabbed`}</p>
                     :<p>0 Gigs Grabbed</p>
                 }
 
                 </div>
                 <div>
                 {
-                    profile.gigshosted !== undefined
+                    localProfile.gigshosted !== undefined
     
-                    ?<p>{`${profile.gigsHosted.length} Gigs Gifted`}</p>
+                    ?<p>{`${localProfile.gigsHosted.length} Gigs Gifted`}</p>
                     :<p>0 Gigs Gifted</p>
                 }
 

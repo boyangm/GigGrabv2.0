@@ -22,11 +22,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
-    const query = `$${req.body.action}: {gigsMates: ${req.body.memberId}}`
+   
+    if(req.body.action === 'push'){
       db.Gigs
-        .findOneAndUpdate({ _id: req.params.id }, {query},{ multi: true })
+        .findOneAndUpdate({ _id: req.params.id },{$push: {gigsMates: req.body.memberId}},{ multi: true })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
+    }else{
+      db.Gigs
+        .findOneAndUpdate({ _id: req.params.id },{$pull: {gigsMates: req.body.memberId}},{ multi: true })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    }
     
   },
   remove: function (req, res) {

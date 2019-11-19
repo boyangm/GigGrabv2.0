@@ -42,7 +42,7 @@ export class Provider extends Component {
         fetch('/api/gigs')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                
                 return this.setState({ gigs: data })
             })
             .catch(err => {
@@ -58,6 +58,8 @@ export class Provider extends Component {
             .then(res => res.json())
             .then(data => {
                 if (data._id === this.state.localUser._id){
+                   
+                    localStorage.setItem('token', JSON.stringify(data)  )
                     this.setState({localUser: data})
                 }else{
 
@@ -72,7 +74,7 @@ export class Provider extends Component {
             .then(res => res.json())
             .then(data => {
                 this.setState({ viewgig: data })
-                console.log(this.state.viewgig);
+               
                 return data
             })
     }
@@ -112,6 +114,7 @@ export class Provider extends Component {
     }
 
     refetch = () =>{
+        console.log(this.state.localUser._id)
         this.fetchOneUser(this.state.localUser._id)
        
 
@@ -127,7 +130,8 @@ export class Provider extends Component {
             memberId,
             action
         }
-        fetch(`api/gigs/${gigId}`, {
+        console.log(data)
+        fetch(`/api/gigs/${gigId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -151,13 +155,12 @@ export class Provider extends Component {
         this.setState({isAuth: false})
 
     }
-    updateMember = (gigId , memberId , action) => {
-        const data = {
-            gigId,
-            memberId,
-            action
-        }
-        fetch(`/api/users/gigs/${data.memberId}`, {
+    updateMember = (data) => {
+       const {gigId,memberId,action} = data;
+        console.log('update member')
+        console.log(data)
+
+        fetch(`/api/users/gigs/${memberId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -166,6 +169,7 @@ export class Provider extends Component {
         }).then(res => {
             res.json()
         }).then(data => {
+            console.log('about to update')
             this.refetch() 
         })
             .catch(err => {
@@ -211,7 +215,8 @@ export class Provider extends Component {
                     logut: this.logout,
                     fetchOneUser: this.fetchOneUser,
                     updateMember: this.updateMember,
-                    fetchGigs: this.fetchGigs
+                    fetchGigs: this.fetchGigs,
+                    updateGig: this.updateGig
                 }
 
             }}>

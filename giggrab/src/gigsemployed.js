@@ -3,7 +3,7 @@ import {Consumer} from './gigcontext'
 import {Link} from 'react-router-dom'
 import GigCard from './gigcard'
 const GigsEmployed = (props) => {
-          
+
         return(
             <Consumer>
                 { context =>
@@ -11,7 +11,7 @@ const GigsEmployed = (props) => {
                     ?(
                         <div className = 'activityBoard'>
                         {context.state.localUser.gigsEmployed.map(gig =>
-                          <GigCard key = {gig} data={gig}></GigCard>
+                          <GigCard key = {gig} data={gig} userId = {context.state.localUser._id} method = 'gigsEmployed'></GigCard>
                         
                         )}
     
