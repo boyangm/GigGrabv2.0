@@ -8,6 +8,9 @@
         background-color: rgba(255,255,255, 0.4);
         margin-top: 90px;
         margin-left: -2rem;
+        @media screen and (max-width: 600px){ 
+            display: none;
+        }
     }
     .middleParent{
         position: relative;
@@ -16,13 +19,20 @@
         text-align: center;
         background-color: rgba(255,255,255, 0.2);
         overflow: auto;
+        @media screen and (max-width: 600px) { 
+            width: 50%;
+        }
     }
     .rightParent{
         position: relative;
         width: 37.5%;
         text-align: center;
         margin-top: 90px;
-        background-color: rgba(255,255,255, 0.1)
+        background-color: rgba(255,255,255, 0.1);
+        @media screen and (max-width: 600px){ 
+            width: 50%;
+        }
+        
 
     }
 

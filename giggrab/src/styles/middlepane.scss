@@ -5,6 +5,7 @@
     flex-flow: column;
     text-align: center;
     width:100%;
+    color: $compliment-light;
     border-bottom: 1px solid lightgray;
     .middleAmount{
         margin: 0 auto;
@@ -21,5 +22,5 @@
         }
 
     }
-    
+
 }
