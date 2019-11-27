@@ -14,6 +14,7 @@ const Activity = (props) =>{
     actions.fetchOneUser(state.localUser._id)
   } , [])
     const {match} = props;
+    
     return(
       <div className="activityCont">
         <ul>
