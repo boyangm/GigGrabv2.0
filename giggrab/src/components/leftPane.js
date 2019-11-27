@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-
+//holds local user info
 const LeftPane = (props) =>{
    const data = props.data;
    console.log(data);

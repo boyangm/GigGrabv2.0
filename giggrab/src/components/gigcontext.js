@@ -1,10 +1,17 @@
 import React, { Component, useState } from 'react'
-import { getJwt } from './helpers/jwt'
-import {Redirect} from 'react-router-dom'
+import { getJwt } from '../helpers/jwt'
+import { Redirect } from 'react-router-dom'
 
 
 export const GigsContext = React.createContext();
 
+/**
+ *
+ * storing all of the application state - boyang matsapola
+ * @export
+ * @class Provider
+ * @extends {Component}
+ */
 export class Provider extends Component {
 
     state = {
@@ -16,16 +23,15 @@ export class Provider extends Component {
         gigs: [],
         viewgig: '',
         profile: {}
-        
+
     }
- 
+
     // grabs all the users from DB
     fetchUsers = () => {
         fetch('/api/users')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                if(!data) return
+                if (!data) return
                 return this.setState({ users: data })
             })
             .catch(err => {
@@ -36,13 +42,13 @@ export class Provider extends Component {
 
     }
 
-    
+
     // grabs all the gigs from the  DB
     fetchGigs = () => {
         fetch('/api/gigs')
             .then(res => res.json())
             .then(data => {
-                
+
                 return this.setState({ gigs: data })
             })
             .catch(err => {
@@ -57,13 +63,13 @@ export class Provider extends Component {
         fetch(`/api//users/${id}`)
             .then(res => res.json())
             .then(data => {
-                if (data._id === this.state.localUser._id){
-                   
-                    localStorage.setItem('token', JSON.stringify(data)  )
-                    this.setState({localUser: data})
-                }else{
+                if (data._id === this.state.localUser._id) {
 
-                    this.setState({profile: data});
+                    localStorage.setItem('token', JSON.stringify(data))
+                    this.setState({ localUser: data })
+                } else {
+
+                    this.setState({ profile: data });
                 }
             })
     }
@@ -74,27 +80,28 @@ export class Provider extends Component {
             .then(res => res.json())
             .then(data => {
                 this.setState({ viewgig: data })
-               
+
                 return data
             })
     }
 
     // if there is a token in local storage auth will be true and the local user will update to what is in the token
     authLogin = (data) => {
-        console.log('made it')
         fetch('api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(res => {
-            console.log(res);
-        }).catch(err => {
+        }).then(res => {console.log('success')})
+        
+        .catch(err => {
             console.log(err)
         })
 
     }
+
+    // formats the date
     formatDate = (date) => {
         var date = new Date(date);
         return date.toDateString();
@@ -102,35 +109,39 @@ export class Provider extends Component {
     }
 
     //is authorized
-    authy = () =>{
+    authy = () => {
         const jwt = getJwt();
-        this.setState({isAuth: true,
-            localUser: JSON.parse(jwt)})
-        
+        this.setState({
+            isAuth: true,
+            localUser: JSON.parse(jwt)
+        })
+
         return true
 
-        
+
 
     }
 
-    refetch = () =>{
-        console.log(this.state.localUser._id)
+    // updates any information that may have changed in the local user
+    refetch = () => {
         this.fetchOneUser(this.state.localUser._id)
-       
+
 
     }
 
-    grabgig = (id) =>{
+    // upstated the gig array of the user that grabs the gig
+    grabgig = (id) => {
         this.updateGig(id, this.state.localUser._id, 'push')
     }
 
-    updateGig = (gigId , memberId , action) => {
+
+    // updates the gigmates via an action type
+    updateGig = (gigId, memberId, action) => {
         const data = {
             gigId,
             memberId,
             action
         }
-        console.log(data)
         fetch(`/api/gigs/${gigId}`, {
             method: 'PUT',
             headers: {
@@ -138,28 +149,29 @@ export class Provider extends Component {
             },
             body: JSON.stringify(data)
         }).then(res => res.json())
-        .then(post => {
-            console.log(post);
-            this.updateMember(data, gigId)
-            
+            .then(post => {
+                this.updateMember(data, gigId)
 
-        })
+
+            })
             .catch(err => {
                 console.log(err)
             })
-    
+
     }
-    logout = () =>{
+
+
+    // logout and reset the app
+    logout = () => {
         localStorage.removeItem('token')
-        console.log('made it')
-        this.setState({isAuth: false})
+        this.setState({ isAuth: false })
 
     }
-    updateMember = (data) => {
-       const {gigId,memberId,action} = data;
-        console.log('update member')
-        console.log(data)
 
+
+     // updates the gighosted or employed via an action type
+    updateMember = (data) => {
+        const { gigId, memberId, action } = data;
         fetch(`/api/users/gigs/${memberId}`, {
             method: 'PUT',
             headers: {
@@ -169,22 +181,24 @@ export class Provider extends Component {
         }).then(res => {
             res.json()
         }).then(data => {
-            console.log('about to update')
-            this.refetch() 
+            this.refetch()
         })
             .catch(err => {
                 console.log(err)
             })
 
     }
+
+
+    // parsed JS Web Token to check if the user exists and is authorized
     componentDidMount() {
         const jwt = getJwt();
         if (jwt) {
             this.setState({
-                isAuth:true,
+                isAuth: true,
                 localUser: JSON.parse(jwt),
             })
-            
+
 
         } else {
             this.setState({
@@ -198,7 +212,7 @@ export class Provider extends Component {
     }
 
 
-   
+
 
     render() {
         return (

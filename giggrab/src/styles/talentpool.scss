@@ -18,6 +18,9 @@
             width:100%;
             max-height: 300px;
         }
+        @media only screen and (max-width: 768px) {
+            height: 400px
+        }
         .cardLink{
             @include button($base, $compliment)
         }

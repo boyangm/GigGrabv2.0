@@ -2,29 +2,49 @@
     position:relative;
     display: flex;
     flex-flow: row;
+    width:100%;
     border-bottom: 1px solid lightgray;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 300px;
+    
 
     width:100%;
     margin: 0 auto;
+    @media only screen and (max-width: 768px) {
+       justify-content: flex-start;
+       margin-left: 0;
+       overflow: scroll;
+    }
     .activityTitle{
         min-width: 33%;
         max-width: 50%;
+        @media only screen and (max-width: 768px) {
+            font-size: .6rem;
+        }
         
     }
     .bandArea{
         position:relative;
         display: flex;
         justify-content: flex-start;
+        @media only screen and (max-width: 768px) {
+            justify-content: space-evenly;
+        }
         width:40%;
         .membersSlot{
             width:25%;
         }
-    
+        .bandName{
+            @media only screen and (max-width: 768px) {
+                font-size: .5rem;
+            }
+        }
         .bandPic{
             height:40px;
             border-radius:100%;
+            @media only screen and (max-width: 768px) {
+                height: 5%;
+            }
         }
     }
     }

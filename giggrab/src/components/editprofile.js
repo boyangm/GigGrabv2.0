@@ -3,6 +3,12 @@ import {Link} from 'react-router-dom';
 import * as filestack from 'filestack-js';
 const client = filestack.init('AFeiQyudCRNK8T2g46sKFz');
 
+/**
+ * form component for editing the user profile - boyang matsapola
+ *
+ * @class EditProfile
+ * @extends {Component}
+ */
 class EditProfile extends Component {
     state = {
         name: this.props.user.name || '',

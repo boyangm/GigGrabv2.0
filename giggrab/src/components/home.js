@@ -5,6 +5,7 @@ import MiddlePane from './middlepane'
 import RightPane from './rightpane'
 import {GigsContext} from './gigcontext'
 
+// holds the user info , the gigs that are available, and the description of each gig
 const Home = (props) =>{
 
     const context = useContext(GigsContext)

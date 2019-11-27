@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { BrowserRouter , Route, Switch, Redirect } from 'react-router-dom';
-import './styles/styles.scss';
+import '../styles/styles.scss';
 import Profile from './profile'
 import Home from './home'
 import Navbar from './navbar'
@@ -14,7 +14,7 @@ import {GigsContext} from './gigcontext'
 import EditProfile from './editprofile'
 
 
-
+//react router routes and main components
 
 function App(props) {
   const context = useContext(GigsContext)

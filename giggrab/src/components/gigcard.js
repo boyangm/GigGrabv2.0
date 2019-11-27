@@ -2,12 +2,19 @@ import React, { Component } from 'react'
 import { Consumer } from './gigcontext'
 import { Link } from 'react-router-dom'
 
+/**
+ * handles the logic of finding all the users on the gig and displaying their info and link to profile - boyang matsapola
+ *
+ * @class GigCard
+ * @extends {Component}
+ */
 class GigCard extends Component {
     state = {
         gig: '0',
         players: []
     }
 
+    // removes player from the gig
     removePlayer = (e) => {
         e.preventDefault();
         const { name } = e.target
@@ -16,31 +23,33 @@ class GigCard extends Component {
         })
         this.setState({ players: newArr })
     }
+
+    // deletes the gig from DB
     deleteGig = (id) => {
 
-        fetch(`/api/gigs/${id}`,{
+        fetch(`/api/gigs/${id}`, {
             method: 'DELETE',
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
 
-
-    removeGig = (e, cb , action = 'close') => {
+    // closes the gig and removes the players from the gig on delete, or just the local player from a gig
+    removeGig = (e, cb, action = 'close') => {
         e.preventDefault();
-        if (action === 'delete'){
-        this.state.players.map(player => {
+        if (action === 'delete') {
+            this.state.players.map(player => {
 
-            let gigId = this.state.gig._id;
-            let action = 'pull'
-            let memberId = player._id
-        
-            cb(gigId, memberId, action)
-        })
-        
+                let gigId = this.state.gig._id;
+                let action = 'pull'
+                let memberId = player._id
+
+                cb(gigId, memberId, action)
+            })
+
             return this.deleteGig(this.state.gig._id)
 
-        }else{
+        } else {
             let gigId = this.state.gig._id;
             let action = 'pull'
             let memberId = this.props.userId
@@ -51,6 +60,7 @@ class GigCard extends Component {
 
     }
 
+    // fetches the gig from the DB
 
     fetchOneGig = (id) => {
         fetch(`/api/gigs/${id}`)
@@ -59,7 +69,6 @@ class GigCard extends Component {
                 this.setState({ gig: data })
                 if (data.gigsMates !== undefined) {
                     data.gigsMates.map(id => this.fetchOneUser(id))
-                    console.log(this.state.gig);
                     return data;
 
                 } else {
@@ -76,6 +85,7 @@ class GigCard extends Component {
             })
     }
 
+    //fetches the User from the DB
     fetchOneUser = (id) => {
         fetch(`/api/users/${id}`)
             .then(res => res.json())
@@ -96,13 +106,13 @@ class GigCard extends Component {
                         <div className='activityTitle'>
                             <h3 >{this.state.gig.title}</h3>
                             <h3 >{context.actions.formatDate(this.state.gig.date)}</h3>
-                            <button name={this.state.gig._id} onClick={(e) =>this.removeGig(e, context.actions.updateGig)}>Close Gig</button>
+                            <button name={this.state.gig._id} onClick={(e) => this.removeGig(e, context.actions.updateGig)}>Close Gig</button>
                             {this.props.info
-                                ?(
+                                ? (
                                     <button name={this.state.gig._id} onClick={(e) => this.removeGig(e, context.actions.updateGig, 'delete')}>Delete Gig</button>
 
                                 )
-                                :null
+                                : null
                             }
                         </div>
                         {this.state.players.map(member => (
@@ -110,7 +120,7 @@ class GigCard extends Component {
                                 <div className='memberSlot'>
                                     <h5 className='bandName'>{member.name}</h5>
                                     <Link to={`/users/${member._id}`}><img className='bandPic' src={member.image} /></Link>
-                                    <h5>{member.instruments[0]}</h5>
+                                    <h5 className ='bandName'>{member.instruments[0]}</h5>
                                     {
                                         this.props.info
                                             ? (

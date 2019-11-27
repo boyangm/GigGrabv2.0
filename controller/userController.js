@@ -113,7 +113,7 @@ module.exports = {
           res.send({ message: 'incorrect name or password' })
         }
       })
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.send({message: 'User Not found'}))
   },
 
 

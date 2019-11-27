@@ -6,7 +6,7 @@ import GigsEmploying from './gigsemploying'
 import{GigsContext} from './gigcontext'
 
 
-
+// updates the  gigs hosted and empoloyed of the user
 const Activity = (props) =>{
   const context = useContext(GigsContext)
   const {state, actions} = context

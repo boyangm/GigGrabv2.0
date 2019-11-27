@@ -17,7 +17,7 @@ $mainFont: 'Cabin', sans-serif;
 @mixin default($height){
     position: relative;
     width: 100%;
-    height: $height;
+    min-height: $height;
 }
 @mixin button($primary,$secondary){
     background: $primary;
@@ -32,8 +32,8 @@ $mainFont: 'Cabin', sans-serif;
         cursor: pointer;
     }
     @media only screen and (max-width: 600px) {
-        font-size: 1rem;
-
+        font-size: .8rem;
+        min-width: 15%;
     }
 }
 
