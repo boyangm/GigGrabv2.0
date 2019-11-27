@@ -2,7 +2,9 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Consumer} from './gigcontext'
 
-// displays all the users and their profile 
+// displays all the users and their profile
+
+
 const TalentPool  = (props) =>{
 
     return(
