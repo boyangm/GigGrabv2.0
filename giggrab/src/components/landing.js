@@ -1,8 +1,14 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom';
-import { getJwt } from './helpers/jwt'
+import { getJwt } from '../helpers/jwt'
 import { Consumer } from './gigcontext';
 
+/**
+ * functioning login page with 2 inputes and a post route - boyang matsapola
+ *
+ * @class Landing
+ * @extends {Component}
+ */
 class Landing extends Component {
         state ={
             email: '',
@@ -10,11 +16,14 @@ class Landing extends Component {
             message:''
         }
     
+    // handles state change related to input change
     handlevaluechange = (event) =>{
         const {name, value} = event.target;
         this.setState({[name]: value});
-        console.log(this.state)
+      
     }
+    
+    //post body on submit to check for user
     handleSubmit = (e, cb) =>{
        e.preventDefault();
        const data = {

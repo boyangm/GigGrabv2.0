@@ -2,6 +2,8 @@ var express = require('express')
 var router = express.Router()
 const userController = require('../controller/userController');
 const gigController = require('../controller/gigcontroller');
+
+// list of api Routes
 router.route('/users')
     .post(userController.create)
     .get(userController.findAll)

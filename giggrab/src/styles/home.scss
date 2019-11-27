@@ -2,6 +2,11 @@
     @include default(100vh);
     display: flex;
     flex-flow: row;
+    @media screen and (max-width: 600px){ 
+        width: 100% !important;
+        padding: 1rem !important ;
+        align-content: center;
+    }
     .leftParent{
         position: relative;
         width: 25%;
@@ -21,6 +26,10 @@
         overflow: auto;
         @media screen and (max-width: 600px) { 
             width: 50%;
+
+            
+            
+            
         }
     }
     .rightParent{

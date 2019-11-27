@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { Consumer } from './gigcontext'
+
+// routes you to different parts of the app
 const NavBar = () => {
     return (
         <Consumer>

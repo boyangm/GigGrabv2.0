@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as filestack from 'filestack-js';
 const client = filestack.init('AFeiQyudCRNK8T2g46sKFz');
 
+/**
+ * stateful component to create user profile
+ *
+ * @class Profiles
+ * @extends {Component}
+ */
 class Profile extends Component {
     state = {
         name: '',
@@ -24,7 +30,6 @@ class Profile extends Component {
     handleChange = (event) => {
         const { name, value } = event.target;
         this.setState({ [name]: value })
-        return console.log(this.state);
     }
 
     // handles the submit event and sends state to renderData
@@ -40,7 +45,7 @@ class Profile extends Component {
             image,
         }
         );
-        if(this.ValidateEmail(email)){
+        if (this.ValidateEmail(email)) {
             this.renderData({ name, password, instruments, image, email, bio })
 
         }
@@ -73,6 +78,8 @@ class Profile extends Component {
 
         }
     };
+
+
     // stores image to filestack
     getImage = (event) => {
         const files = event.target.files;
@@ -89,13 +96,16 @@ class Profile extends Component {
             });
     }
 
+    // checks to make sure email is valid
     ValidateEmail = (mail) => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
             return (true)
         }
-        this.setState({message:"You have entered an invalid email address!"})
+        this.setState({ message: "You have entered an invalid email address!" })
         return (false)
     }
+
+
     // send data to the backend
     renderData = data => {
         fetch('/api/users', {
@@ -132,7 +142,7 @@ class Profile extends Component {
 
         return (
             <div className="profileCont">
-                <h3 className = "createProf">Create Your Profile</h3>
+                <h3 className="createProf">Create Your Profile</h3>
                 <form onSubmit={this.handleSubmit} ref={(el) => this.myFormRef = el}>
                     <label for="name">Name:</label>
                     <input onChange={this.handleChange} value={this.state.name} type='text' name='name' />
@@ -155,9 +165,9 @@ class Profile extends Component {
                         <option value="Other">Other</option>
                     </select>
                     <h3>{this.state.instruments.map(item => `${item}, `)}</h3>
-                    <Link to = "/login"><button>Login!</button> </Link>                
+                    <Link to="/login"><button>Login!</button> </Link>
                     <button type="submit">Submit</button>
-                    </form>
+                </form>
             </div>
         )
     }

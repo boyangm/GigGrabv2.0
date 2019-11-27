@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const app = express();
 
+//middleware
 const routes = require("./routes");
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -18,6 +19,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/giggrab"
 mongoose.connect(MONGODB_URI)
 .then(() => console.log('Mongo Db connected'))
 .catch(err => console.log(err));
+
+//for build on heroku deploy
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('giggrab/build'))

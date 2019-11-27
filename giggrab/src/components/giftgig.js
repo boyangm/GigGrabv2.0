@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import {Consumer} from './gigcontext'
 
+/**
+ *  class component for form that gift gigs to other users - boyang matsapola
+ *
+ * @class Giftgig
+ * @extends {Component}
+ */
 class Giftgig extends Component {
     state = {
         title: '',
@@ -13,23 +19,24 @@ class Giftgig extends Component {
 
     }
 
+    // moves the window to back to home
     redirectToTarget = () => {
         this.props.history.push('/home');
     }
 
+    //handles stte to reflect input change
     handleChange = (event) => {
         const { name, value } = event.target;
             this.setState({ [name]: value })
-        return console.log(this.state);
     }
 
+    // sets the author always to local user.
     getAuthor = (author) =>{
-        console.log(author);
         return this.setState({author})
 
     }
 
-
+    // sets final logic upon submit
     handleSubmit = (event) => {
         event.preventDefault();
         const { title, location, instruments, moneyPaid, description, date } = this.state;
@@ -46,11 +53,13 @@ class Giftgig extends Component {
      
 
     }
+
     componentDidMount(){
         const user =JSON.parse(localStorage.getItem('token'));
         this.setState({author: user._id})
     }
 
+    // handles array logic for choosing instruments
     handleInstrumentChange = (event) => {
         const instrument = event.target.value;
         const prevState = this.state.instruments;
@@ -75,7 +84,7 @@ class Giftgig extends Component {
         }
     };
 
-
+    //updates the gigs employed of user
     updateMember = (author, id , action = 'push') => {
         fetch(`api/users/giftgigs/${author}`, {
             method: 'PUT',
@@ -86,7 +95,6 @@ class Giftgig extends Component {
         }).then(res => {
             res.json()
         }).then(data => {
-            console.log(data);
             return true
         })
             .catch(err => {
@@ -94,7 +102,7 @@ class Giftgig extends Component {
             })
         }
 
-
+    // post route to post gig.
     renderData = data => {
         fetch('/api/gigs', {
             method: 'POST',
@@ -105,7 +113,6 @@ class Giftgig extends Component {
         }).then(res => res.json())
         .then(data =>{
           this.updateMember(this.state.author, data._id)
-            console.log(data);
                 this.setState({
                     title: '',
                     instruments: [],

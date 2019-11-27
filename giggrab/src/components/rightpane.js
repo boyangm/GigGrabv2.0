@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Consumer } from './gigcontext'
 
+// displays the data for a gig
 const RightPane = (props) => {
     const { data } = props;
 

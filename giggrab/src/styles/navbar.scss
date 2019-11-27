@@ -16,7 +16,7 @@
         .title{
             @include nav(center);
             margin-left: 25px;
-            width: 50%;
+            width: 20%;
             font-size: 40px;
             font-family: 'Aldrich', sans-serif;
             @media only screen and (max-width: 600px) {
@@ -33,9 +33,9 @@
             
             position: relative;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             align-self: center;
-            width: 50%;
+            width: 70%;
             margin: 0;
             margin-right: 15px;
             .linkItems{
@@ -53,6 +53,9 @@
                     font-size: .8rem;
                     margin: 0 10px;
                     padding: 0;
+                    &:last-child{
+                        margin: 0
+                    }
       
                 }
                 @media screen and (min-width: 600px) and (max-width: 768px) { 
