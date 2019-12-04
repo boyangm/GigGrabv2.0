@@ -27,7 +27,7 @@ class Landing extends Component {
     handleSubmit = (e, cb) =>{
        e.preventDefault();
        const data = {
-           email: this.state.email,
+           email: this.state.email.toLowerCase(),
            password: this.state.password
        }
        fetch('api/login', {

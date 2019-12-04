@@ -15,7 +15,7 @@ class Profile extends Component {
         email: '',
         password: '',
         instruments: [],
-        image: '',
+        image: 'https://electric-objects-web-production-attachments.imgix.net/artworks/preview_images/000/008/186/original/a6d8f750a88bb4abf11192012c4fdaed/Screen_Shot_2015-07-18_at_10.55.18_AM.png?ixlib=rb-0.3.5&fm=jpg&dpr=1&w=1080&h=1920&bg=000&fit=crop&lossless=false&s=1e9964ca6befb1b5972fabe342950f71',
         bio: '',
         message: ''
 
@@ -45,8 +45,10 @@ class Profile extends Component {
             image,
         }
         );
-        if (this.ValidateEmail(email)) {
-            this.renderData({ name, password, instruments, image, email, bio })
+        let newemail = email.toLowerCase();
+        console.log(newemail)
+        if (this.ValidateEmail(newemail )) {
+            this.renderData({ name, password, instruments, image, email: newemail , bio })
 
         }
 
