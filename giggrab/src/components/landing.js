@@ -35,7 +35,7 @@ class Landing extends Component {
                headers: {
                    'Content-Type': 'application/json'
                },
-               body: JSON.stringify(this.state)
+               body: JSON.stringify(data)
            }).then(res => res.json())
            .then(data => {
 
