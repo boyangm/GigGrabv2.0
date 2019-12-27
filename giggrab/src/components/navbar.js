@@ -7,7 +7,9 @@ const NavBar = () => {
     return (
         <Consumer>
             {context =>
-                <div className="navbar">
+                context.state.isAuth
+
+                ?(<div className="navbar">
                     <h3 className='title'> Giggrab</h3>
                     <div className="links" >
                         <NavLink exact to="/home" className="linkItems" >Home</NavLink>
@@ -15,6 +17,9 @@ const NavBar = () => {
                         <NavLink exact to='/talentpool' className="linkItems">Talent Pool</NavLink>
                         <NavLink onClick={context.actions.logout} exact to="/logout" className="linkItems" >Logout</NavLink>
                     </div>
+                </div>)
+                :<div>
+
                 </div>
 
 

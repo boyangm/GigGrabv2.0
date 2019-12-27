@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Gig Grab
+# Where Musicians Earn
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+Gig grab is a No-Sql /Express, mobile -ready React App that allows musicians ot find eachother to connect for musical events
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - Post a gig to the community
+  - Others will Hop on to the GIG
+  - Edit the Band and pay them out after the show!
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# New Features!
 
-### `npm test`
+  - Keep track of the gigs that you have given out and taken 
+  - See the profile of the others that are trying to be on a gig with you
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+You can also:
+  - See Gigs as they are added by other users
+  - Take yourself off gigs you no longer want
+  - Edit your profile
+### Tech
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Gig Grab uses a number of open source projects to work properly:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* [React] - UI front end library for web apps!
+* [Visual studio Code] - awesome web-based text editor
+* [Mongo DB] - No-SQl database for storing Data
+* [Mongoose] - ODM for Mongo that allows us to create constistent data models.
+* [node.js] - evented I/O for the backend
+* [Express] - fast node.js network app framework [@tjholowaychuk]
+* [File Stack API] - Image hosting and file uploading
+* [react- router]- Seamlessly intergrate nested routing into our APP
+* [context API / react Hooks]- creat a global store for our APP state
+* [javascript] - front end and back end language
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Sign UP or feel free to use 
+Login IN
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Follow the simple UI to find Other Musicians
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### futureDevelopment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ method to handle payment for our users
+ 
+insant messaging with WEb socket technology
 
-### Code Splitting
+email link between Users
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ 
