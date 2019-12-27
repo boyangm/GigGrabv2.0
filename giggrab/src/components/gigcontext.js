@@ -26,6 +26,11 @@ export class Provider extends Component {
 
     }
 
+    setIsAuth = (value) =>{
+        return this.setState({isAuth: value})
+    }
+
+
     // grabs all the users from DB
     fetchUsers = () => {
         fetch('/api/users')
@@ -226,7 +231,8 @@ export class Provider extends Component {
                     fetchOneUser: this.fetchOneUser,
                     updateMember: this.updateMember,
                     fetchGigs: this.fetchGigs,
-                    updateGig: this.updateGig
+                    updateGig: this.updateGig,
+                    setIsAuth: this.setIsAuth
                 }
 
             }}>

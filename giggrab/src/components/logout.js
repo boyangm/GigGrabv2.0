@@ -1,23 +1,25 @@
-import React, {Component} from 'react'
+import React, {Component, useContext, useEffect} from 'react'
+import {GigsContext} from './gigcontext'
 
-/**
- *removes token and pushes window back to login
- *
- * @class Logout
- * @extends {Component}
- */
-class Logout extends Component{
-componentDidMount(){
-    localStorage.removeItem('token')
-    this.props.history.push('/login')
-}
-    render(){
+ const Logout = (props) =>{
+    const context = useContext(GigsContext);
+    const {setIsAuth} = context.actions
+
+    const handleLogout = () =>{
+        return setIsAuth(false)
+    }
+    useEffect(() => {
+        localStorage.removeItem('token')
+        handleLogout()
+        props.history.push('/login')
+        
+    }, [])
+
         return(
             <div>
-
             </div>
         )
-    }
+    
 }
 
 export default Logout
