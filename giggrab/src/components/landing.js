@@ -77,8 +77,8 @@ class Landing extends Component {
                     <input type = "password"  name = "password" onChange = {this.handlevaluechange} value = {this.state.password}></input>
                 </div>
                 <br></br>
-                <button onClick ={(e) =>this.handleSubmit(e,context.actions.authy)}>Log In!</button>
-                <Link to = "/signup"><button>Sign Up!</button> </Link>
+                <button onClick ={(e) =>this.handleSubmit(e,context.actions.authy)}>Log In</button>
+                <Link to = "/signup"><button>Sign Up</button> </Link>
                 </form>
             </div>
             } 

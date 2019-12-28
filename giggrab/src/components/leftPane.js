@@ -18,7 +18,7 @@ const LeftPane = (props) =>{
                  <h4 className = "instruments">{data.instruments.map( item => `${item}, `)}</h4>
                  <h4 className = "rating">{` Rating: ${data.rating.$numberDecimal}`}</h4>
                  <div className = 'buttonCont'>
-                 <Link to='/giftgig'><button className = 'gigbutton'>Gift Gig!</button></Link>
+                 <Link to='/giftgig'><button className = 'gigbutton'>Gift Gig</button></Link>
                 <Link  to ={`/edit`}><button className ='gigbutton' >Edit Profile</button></Link>
 
                 </div>

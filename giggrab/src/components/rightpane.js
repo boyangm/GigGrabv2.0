@@ -16,7 +16,7 @@ const RightPane = (props) => {
                             <h5 className='rightAmount'>{`$${data.moneyPaid}`}</h5>
                             <h5 className='rightdate'>{context.actions.formatDate(data.date)}</h5>
                             <div className='buttonCont'>
-                                <button className = 'viewbutton' onClick={() => context.actions.grabgig(data._id)} id={data._id} >Grab Gig!</button>
+                                <button className = 'viewbutton' onClick={() => context.actions.grabgig(data._id)} id={data._id} >Grab Gig</button>
                             </div>
                                 <p>{data.description}</p>
                         </div>
