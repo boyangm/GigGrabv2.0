@@ -5,6 +5,7 @@ import {GigsContext} from './gigcontext'
     const context = useContext(GigsContext);
     const {setIsAuth} = context.actions
 
+    //calls custom setter hook to reset authorization
     const handleLogout = () =>{
         return setIsAuth(false)
     }

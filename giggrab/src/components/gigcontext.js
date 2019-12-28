@@ -26,6 +26,7 @@ export class Provider extends Component {
 
     }
 
+    //custom hook to logout of the app and hide the nav bar
     setIsAuth = (value) =>{
         return this.setState({isAuth: value})
     }
