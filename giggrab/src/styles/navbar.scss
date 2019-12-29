@@ -1,5 +1,5 @@
 .scrolled {
-    background-color: #0e0d0f !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
     transition: all .3s;
 }
 .navbar{
@@ -7,18 +7,30 @@
     display: flex;
     width: 100%;
     height: auto;
+    align-content: center;
+    height:119px;
     justify-content: space-between;
     flex-flow: row;
+    
     position: fixed;
     z-index: 3;
     background-color: transparent;
     
         .title{
             @include nav(center);
+            align-self: center;
             margin-left: 25px;
             width: 20%;
+            text-decoration: none;
             font-size: 40px;
             font-family: 'Aldrich', sans-serif;
+            transition: all .2s;
+            &.active{
+                color: #35325c;
+            }
+            &:hover {
+            color: #35325c ;
+            }
             @media only screen and (max-width: 600px) {
                 font-size: .8rem;
                 width: 40px;
