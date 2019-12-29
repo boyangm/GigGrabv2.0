@@ -25,7 +25,7 @@ const NavBar = () => {
             {context =>
                 context.state.isAuth
 
-                ?(<div className="navbar">
+                ?(<div className={navState}>
                 <NavLink exact to="/home" className="title" >Giggrab</NavLink>
                     <div className="links" >
                         
