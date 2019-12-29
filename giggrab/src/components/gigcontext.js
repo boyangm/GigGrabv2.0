@@ -32,6 +32,7 @@ export class Provider extends Component {
     }
 
 
+
     // grabs all the users from DB
     fetchUsers = () => {
         fetch('/api/users')
