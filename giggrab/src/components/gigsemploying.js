@@ -9,7 +9,7 @@ const GigsEmploying = (props) => {
         return(
             <Consumer>
                 { context =>
-                    context.state.isAuth && context.state.localUser
+                    context.state.isAuth
                     ?(
                         <div className = 'activityBoard'>
                         {context.state.localUser.gigsHosted.map(gig =>
@@ -19,7 +19,7 @@ const GigsEmploying = (props) => {
     
                         </div>
                     )
-                    : props.history.push('/login')
+                    : props.history.push('/landing')
     
                 }
             </Consumer>

@@ -12,7 +12,7 @@ const RightPane = (props) => {
                 data
                     ? <div className='rightParent'>
                         <div className='rightCont'>
-                            <h5 className='rightTitle'>{data.title}</h5>
+                            <h5 className='rightTitle'>{data.title.toUpperCase()}</h5>
                             <h5 className='rightAmount'>{`$${data.moneyPaid}`}</h5>
                             <h5 className='rightdate'>{context.actions.formatDate(data.date)}</h5>
                             <div className='buttonCont'>

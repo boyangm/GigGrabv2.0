@@ -1,1 +1,4 @@
-@import 'variables', 'navbar', 'contact' ,'home','rightpane','middlepane', 'leftPane','talentpool', 'landing','activity','gigcard', 'user';
+*{
+    box-sizing: border-box;
+}
+@import 'variables', 'navbar', 'contact' ,'home','rightpane','middlepane', 'leftPane','talentpool', 'landing','activity','gigcard', 'user' ,'footer', 'socials';

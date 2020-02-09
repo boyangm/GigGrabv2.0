@@ -6,7 +6,8 @@ import { Consumer, GigsContext } from './gigcontext'
 const NavBar = () => {
     const [navState, setNavState] = useState('navbar') 
     const handleScroll =() =>{
-        if(window.scrollY > 119){
+        if(window.scrollY > 60){
+            console.log(window.scrollY)
             setNavState('navbar scrolled')
         }else{
           setNavState('navbar')

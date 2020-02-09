@@ -1,40 +1,119 @@
 .landingCont, .profileCont, .homeCont, .poolCont, .activityCont, .userCont{
     @include default(100vh);
-    width: 96% !important;
-    background: url('https://www.tokkoro.com/picsup/3106425-audience_band_concert_crowd_lights_music_musical-instruments_musician_musicians_party_people_performance_singer_smoke_spotlights_stage.jpg') center no-repeat;
-    background-size: cover;
-    padding-top: 10px;
-    background-color: $base;
-    background-blend-mode: multiply;
     text-align: center;
-    padding: 2rem;
-    min-height: 120vh;
-    background-attachment: fixed;
+    min-height: 100vh;
+    margin-top: 119px;
+    padding-bottom: 20px;
+    background: #e3e3e3;
+    
+    // background-attachment: fixed;
+    .toggle{
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 100;
+        @media only screen and ( min-width: 600px){
+            display: none;
+        }
 
-    .landingTitle{
-        color: transparent;
-        -webkit-text-stroke-width: .5px;
-        -webkit-text-stroke-color: $compliment-light;
-        font-size: 5rem;
-        letter-spacing: .7rem;
-        margin: 15% auto 0;
-        font-family: 'Aldrich', sans-serif;
+
     }
-    .landingSubTitle{
-        font-size: 2rem;
-        letter-spacing: .7rem;
-        color: $compliment-light;
-        padding: 1rem;
-        font-family: 'Aldrich', sans-serif;
+    .heroSpot{
+        @include default(75vh);
+        padding: 50px 0;
+        background: url('https://www.billboard.com/files/styles/article_main_image/public/media/concert-crowd-audience-stock-2019-u-billboard-1548.jpg') center no-repeat;
+        background-size: cover;
+        background-position-y: top;
+        text-align: center;
+        background-color: lighten($compliment,30%);
+        background-blend-mode: multiply;
+     
+        .landingTitle{
+            position: relative;
+            margin: 0 auto;
+            margin-top: 10%;
+            color: white;
+            mix-blend-mode: difference;
+            font-size: 7rem;
+            letter-spacing: 1rem;
+            font-family: 'Arvo', serif;
+                @media only screen and (max-width:600px){
+                   font-size: 5rem;
+                }
+        }
+        .landingSubTitle{
+            position: relative;
+            top: 50%;
+            margin: 0;
+            font-size: 2rem;
+            color: white;
+            mix-blend-mode: difference;
+            letter-spacing: .7rem;
+            padding: 1rem;
+            font-family: 'Arvo', serif;
+   
+        }
+
+    }
+    .about{
+        @include default(auto);
+        padding-top: 50px;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+
+        .split{
+            margin: 10px;
+            p{
+                line-height: 1.5rem;
+                font-family: $mainFont;
+            }
+        }
+        #instructions{
+            position: relative;
+            background-color: transparent;
+            border-radius:20px;
+            text-align: center;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            height: 500px;
+            width: 50%;
+            margin: 0 auto;
+
+            @media only screen and (max-width:768px){
+                width: 90%;
+            }
+            h3{
+                margin-left: -30px;
+                @media only screen and (max-width:768px){
+                    margin-left: 0;
+                }
+            }
+            .pitchPoint{
+                color: darken($base, 15%);
+                margin-left: -30px;
+                font-size: 1.5rem;
+                @media only screen and (max-width:768px){
+                    margin-left: 0;
+                }
+            }
+        }
+
     }
     .createProf {
-        color: $compliment-light;
+        color: $compliment;
         padding: 1rem;
         font-family: 'Aldrich', sans-serif;
         padding-top: 80px;
     }
     label {
-        color: $compliment-light;
+        color: $compliment;
         display: block;
         padding: 10px 0px;
     }
@@ -44,32 +123,33 @@
     .landingLabel{
         color: lighten($compliment-light,10%);
         font-weight: bold;
-        font-size: 1.5rem;
-        display: block;
-        padding-bottom: 10px;
+        font-size: 1rem;
+        padding: 0 10px;
+
     }
     input{
         
-        border: 1px solid $compliment;
+        border: 1px solid $compliment-light;
         border-radius: 10px;
         margin: 10px;
         background: transparent;
         font-weight: bold;
         font-size: 12px;
         color: $compliment-light;
-        width: 97%;
+        width: 75%;
     }
     button{
-        @include button($compliment-light, $base);
-        color: #0e0d0f;
+        @include button($compliment, $base);
+        font-size: 1.5rem;
         border: none;
         border: 1px solid $compliment-light;
         transition: all .3s;
         
     }
     button:hover {
-        color: $compliment-light;
+        color: $compliment;
         background: transparent;
+        transform: scale(1.2);
         border: 1px solid $compliment-light;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
@@ -78,6 +158,64 @@
         display: inline-block;
         width: fit-content
     }
+    .login{
+        position: fixed;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+        align-items: center;
+        top: 0;
+        padding: 10px 0;
+        background-color:transparent;
+        width: 100%;
+ 
+        transition: all 1s;
+        @media only screen and (max-width: 600px){
+            flex-flow: column;
+            justify-content: center;
+            background:$compliment;
+            transform: translateX(-100%);
+            transition: transform 0.4s;
+            height: 100vh;
+        };
+        label{
+            width: 10%;
+            @media only screen and (max-width: 600px){
+                width: 50%;
+              margin: 20px auto;
+            };
+        }
+        input{
+            width:15%;
+            @media only screen and (max-width: 600px){
+                width: 70% !important;
+                padding: 10px 0;
+                color: white;
+
+            }
+        }
+        button{
+            margin-top: 0;
+            align-self: center;
+            min-width: 40px;
+            font-size: 1rem;
+            @media only screen and (max-width: 600px){
+                margin: 30px auto !important;
+                padding: 10px;
+                width: 200px;
+                @include button($base, $compliment)
+              };
+        }
+        a{
+            margin-top: -5px;
+        }
+        &.isTrue{
+            transform: translateX(0);
+            transition: transform 0.4s;
+            z-index: 4;
+        }
+    }
+
 }
 @media only screen and (max-width: 768px) {
     form{
@@ -88,4 +226,15 @@
         margin-left: -6%;
     }
 
+}
+
+.subTitle{
+    color: $compliment;
+    font-size: 1.5rem;
+    font-family: $default-font;
+
+}
+
+.landingCont{
+    margin: 0;
 }

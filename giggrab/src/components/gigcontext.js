@@ -16,10 +16,10 @@ export class Provider extends Component {
 
     state = {
         users: [],
-        localUser: undefined,
+        localUser: {_id:""},
         users: [],
         data: this.data,
-        isAuth: undefined,
+        isAuth: false,
         gigs: [],
         viewgig: '',
         profile: {}
@@ -65,7 +65,7 @@ export class Provider extends Component {
     }
 
     fetchOneUser = (id) => {
-        fetch(`/api//users/${id}`)
+        fetch(`/api/users/${id}`)
             .then(res => res.json())
             .then(data => {
                 if (data._id === this.state.localUser._id) {
@@ -128,7 +128,10 @@ export class Provider extends Component {
 
     // updates any information that may have changed in the local user
     refetch = () => {
-        this.fetchOneUser(this.state.localUser._id)
+        if(this.state.localUser._id !== 'undefined'){
+
+            this.fetchOneUser(this.state.localUser._id)
+        }
 
 
     }
@@ -225,6 +228,7 @@ export class Provider extends Component {
                     login: this.authLogin,
                     fetchGigs: this.fetchGigs,
                     fetchUsers: this.fetchUsers,
+                    refetch: this.refetch,
                     getgig: this.fetchOneGig,
                     grabgig: this.grabgig,
                     formatDate: this.formatDate,

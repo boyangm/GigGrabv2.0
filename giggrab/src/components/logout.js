@@ -12,7 +12,7 @@ import {GigsContext} from './gigcontext'
     useEffect(() => {
         localStorage.removeItem('token')
         handleLogout()
-        props.history.push('/login')
+        props.history.push('/landing')
         
     }, [])
 

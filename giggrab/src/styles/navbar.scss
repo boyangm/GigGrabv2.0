@@ -1,9 +1,10 @@
 .scrolled {
-    background-color: rgba(0, 0, 0, 0.9) !important;
-    transition: all .3s;
+    background-color: rgba(0, 0, 0, 1.0) !important;
+    transition: all 0.8s;
 }
 .navbar{
-    position: relative;
+    position: fixed;
+    top:0;
     display: flex;
     width: 100%;
     height: auto;
@@ -11,10 +12,10 @@
     height:119px;
     justify-content: space-between;
     flex-flow: row;
-    
+    transition: all 0.8s;
     position: fixed;
     z-index: 3;
-    background-color: transparent;
+    background-color: black;
     
         .title{
             @include nav(center);
@@ -27,10 +28,12 @@
             font-family: 'Aldrich', sans-serif;
             transition: all .2s;
             &.active{
-                color: #35325c;
+                color: $compliment;
             }
             &:hover {
-            color: #35325c ;
+            color: $base;
+            
+
             }
             @media only screen and (max-width: 600px) {
                 font-size: .8rem;
@@ -57,10 +60,11 @@
                 text-decoration: none;
                 transition: all .2s;
                 &.active{
-                    color: #35325c;
+                    color: $compliment;
                 }
                 &:hover {
-                color: #35325c ;
+                color: $base;
+                transform: scale(1.2);
             }
                 @media only screen and (max-width: 600px) {
                     font-size: .8rem;

@@ -13,7 +13,7 @@ const MiddlePane = (props) => {
                 <div className='middleParent'>
                     {data.map(item =>
                         <div className='middleCont'>
-                            <h5 className='middleTitle'>{item.title}</h5>
+                            <h5 className='middleTitle'>{item.title.toUpperCase()}</h5>
                             <h5 className='middleAmount'>{`$${item.moneyPaid}`}</h5>
                             <h5 className='middledate'>{context.actions.formatDate(item.date)}</h5>
                             <div className='buttonCont'>

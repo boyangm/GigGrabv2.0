@@ -12,6 +12,7 @@ const Home = (props) =>{
     
     useEffect(() =>{
         context.actions.fetchGigs()
+        // context.actions.refetch();
 
     },[])
 
@@ -28,7 +29,7 @@ const Home = (props) =>{
                         <RightPane data ={state.viewgig}></RightPane>
 
                     </div>)
-                    : props.history.push('/login')
+                    : props.history.push('/landing')
 
                     }
                 </div>

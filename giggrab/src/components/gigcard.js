@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
  */
 class GigCard extends Component {
     state = {
-        gig: '0',
+        gig: {title: 'placeholder'},
         players: []
     }
 
@@ -104,7 +104,7 @@ class GigCard extends Component {
 
                     <div className='activityCard'>
                         <div className='activityTitle'>
-                            <h3 >{this.state.gig.title}</h3>
+                            <h3 >{this.state.gig.title.toUpperCase()}</h3>
                             <h3 >{context.actions.formatDate(this.state.gig.date)}</h3>
                             <button name={this.state.gig._id} onClick={(e) => this.removeGig(e, context.actions.updateGig)}>Close Gig</button>
                             {this.props.info
@@ -118,7 +118,7 @@ class GigCard extends Component {
                         {this.state.players.map(member => (
                             <div className='bandArea'>
                                 <div className='memberSlot'>
-                                    <h5 className='bandName'>{member.name}</h5>
+                                    <h5 className='bandName'>{member.name.toUpperCase()}</h5>
                                     <Link to={`/users/${member._id}`}><img className='bandPic' src={member.image} /></Link>
                                     <h5 className ='bandName'>{member.instruments[0]}</h5>
                                     {

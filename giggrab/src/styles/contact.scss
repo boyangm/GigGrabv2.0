@@ -4,29 +4,37 @@
     width: 60%;
     margin: 0 auto;
     flex-flow: column; 
+    background-color: #e3e3e3;
+    padding-bottom: 30px;
 
     h3{
-        color: $base;
+        color: $compliment;
         font-family: $mainFont;
-        font-size: 1.5rem;
+        font-size: 2.5rem;
     }
     label{
         width: 100%;
-        color: $base;
+        color: $compliment;
     }
     input,
     textarea{
-        width: 97%;
+        width: 75%;
         padding: 10px 0;
         font-size: 1.25rem;
+        color: black !important;
+        background: transparent;
         border: none;
         border-bottom: 1px solid lightgray;
     }
     .instrumentbox{
         @include default( auto);
-        width: 97% !important;
+        width: 75% !important;
+        background: transparent;
+        color:$compliment;
+        font-family: $mainFont;
+        font-weight: bold;
     }
     button{
-      @include button($base, $compliment)
+      @include button($compliment, $base)
     }
 }

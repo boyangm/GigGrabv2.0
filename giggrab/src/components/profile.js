@@ -155,8 +155,6 @@ class Profile extends Component {
                     <input onChange={this.handleChange} value={this.state.email} type='text' name='email' />
                     <label for="proImage">Profile Image:</label>
                     <input id="fileInput" type="file" accept="image/png, image/jpeg" onChange={this.getImage} />
-                    <label for="bio">Bio:</label>
-                    <textarea onChange={this.handleChange} value={this.state.bio} name='bio' />
                     <label for="start">Instrument:</label>
                     <select className="instrumentbox" multiple={true} value={this.state.instruments} onChange={this.handleInstrumentChange}>
                         <option value="Guitar">Guitar</option>
@@ -167,8 +165,8 @@ class Profile extends Component {
                         <option value="Other">Other</option>
                     </select>
                     <h3>{this.state.instruments.map(item => `${item}, `)}</h3>
-                    <Link to="/login"><button>Login!</button> </Link>
-                    <button type="submit">Submit</button>
+                    <Link to="/landing"><button>Back</button> </Link>
+                    <button type="submit">Login</button>
                 </form>
             </div>
         )

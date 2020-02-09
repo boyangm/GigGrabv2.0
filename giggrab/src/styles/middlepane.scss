@@ -4,11 +4,22 @@
     display: flex;
     flex-flow: column;
     text-align: center;
+    border-left: 1px solid $compliment-light;
+    border-right: 1px solid $compliment-light;
+    border-top: 1px solid $compliment-light;
     width:100%;
-    color: $compliment-light;
+    color: $compliment;
+    font-family: $default-font;
     border-bottom: 1px solid lightgray;
+    .middleTitle{
+        font-size: 1.25rem;
+        @media only screen and ( max-width: 600px){
+            font-size: 1rem;
+        }
+    }
+
     .middleAmount{
-        margin: 0 auto;
+        margin: 0 auto 20px;
     }
     .middledate{
         margin: 0 auto;
@@ -16,7 +27,7 @@
     .buttonCont{
         width: 100%;
         .gigbutton{
-            @include button($base, $compliment);
+            @include button($compliment, $base);
             max-width: 175px;
     
         }

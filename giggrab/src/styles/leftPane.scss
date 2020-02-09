@@ -2,29 +2,37 @@
 .leftCont{
     position: -webkit-sticky;
     position: sticky;
-    z-index: 2;
     top: 119px;
+    z-index: 2;
     display: flex;
     flex-flow: column;
     justify-content: center;
     width: 100%;
-    color: $compliment-light;
+    color: $compliment;
+    border-top: 1px solid $compliment-light;
     .proTitle{
-        margin: 20px auto; 
+        margin: 50px auto 30px; 
+        font-size: 1.5rem;
+        font-family: $default-font;
+        letter-spacing: .2rem;
 
     }
     .profilePic{
         width: 60%;
         border-radius: 100%;
+        height: 250px;
         margin: 0 auto;
 
     }
     .instruments,
     .rating{
-        margin: 20px auto 0; 
+        margin: 20px auto;
+        font-family: $default-font;
+        font-size: 1.5rem;
+         
     }
     button{
-        @include button($base, $compliment);
+        @include button($compliment, $base);
     
     }
     @media screen and (max-width: 600px) { 

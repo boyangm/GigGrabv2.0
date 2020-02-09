@@ -6,21 +6,33 @@
     top: 119px;
     display: flex;
     flex-flow: column;
+    background: #e3e3e3;
     text-align: center;
-    color: $compliment-light;
+    color: $compliment;
+    font-family: $default-font;
+    border-top: 1px solid $compliment-light;
     width:100%;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid $compliment-light;
+    .rightTitle{
+        font-size: 1.25rem;
+        @media only screen and (max-width: 600px){
+            font-size: 1rem;
+        }
+    }
     .rightAmount{
-        margin: 0 auto;
+        margin: 0 auto 20px;
     }
     .rightdate{
         margin: 0 auto;
+    }
+    p{
+        margin: 30px auto;
     }
     .buttonCont{
         width: 100%;
         margin: 0 auto;
         .viewbutton{
-            @include button($base, $compliment);
+            @include button($compliment,$base);
             max-width: 175px;
     
         }

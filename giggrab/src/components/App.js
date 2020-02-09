@@ -12,6 +12,7 @@ import Activity from './activity'
 import Logout from './logout'
 import {GigsContext} from './gigcontext'
 import EditProfile from './editprofile'
+import Footer from './Footer'
 
 
 //react router routes and main components
@@ -23,8 +24,8 @@ function App(props) {
     <BrowserRouter>
     <Navbar></Navbar>
       <Switch>
-        <Route exact path = "/" render = {() => <Redirect to = "/login"/>}/>
-        <Route path = "/login" component = {Landing}/>
+        <Route exact path = "/" render = {() => <Redirect to = "/landing"/>}/>
+        <Route path = "/landing" component = {Landing}/>
         <Route path = "/logout" component = {Logout}/>
         <Route path = "/edit" render = {(props) =><EditProfile {...props} user = {localUser}/>}/>
         <Route path = "/signup" component = {Profile}/>
@@ -36,6 +37,7 @@ function App(props) {
 
 
       </Switch>
+      <Footer></Footer>
     </BrowserRouter>
   
   );

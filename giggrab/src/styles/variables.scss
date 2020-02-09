@@ -1,5 +1,5 @@
 //colors
-$base: #35325c;
+$base: #fad20a;
 $compliment : complement($base);
 $compliment-light: lighten($compliment, 30%);
 $default-font: 'Aldrich', sans-serif;
@@ -8,7 +8,7 @@ $default-font: 'Aldrich', sans-serif;
 $mainFont: 'Cabin', sans-serif;
 
 @mixin nav ($position) {
-    color: $compliment-light;
+    color: lighten($compliment,10%);
             font-size: 1.5rem;
             font-family: $mainFont;
             align-items: $position;
@@ -23,7 +23,7 @@ $mainFont: 'Cabin', sans-serif;
     background: $primary;
     margin: 10px 10px 0;
     min-width: 100px;
-    color: lighten($secondary,30%);
+    color: lighten($secondary,20%);
     font-family: $mainFont;
     font-size: 1.5rem;
     border-radius: 10px;

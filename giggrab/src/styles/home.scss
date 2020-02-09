@@ -2,25 +2,26 @@
     @include default(100vh);
     display: flex;
     flex-flow: row;
+    background: #e3e3e3;
     @media screen and (max-width: 600px){ 
         width: 100% !important;
-        padding: 1rem !important ;
+        padding: 0 !important ;
         align-content: center;
     }
     .leftParent{
         position: relative;
-        width: 25%;
-        background-color: rgba(255,255,255, 0.4);
-        margin-top: 90px;
-        margin-left: -2rem;
+        width: 33%;
+        background-color:#e3e3e3;
+        margin-top: 0;
         @media screen and (max-width: 600px){ 
             display: none;
         }
     }
     .middleParent{
         position: relative;
-        width: 37.5%;
-        margin-top: 90px;
+        width: 33%;
+        margin-top: 0;
+        
         text-align: center;
         background-color: rgba(255,255,255, 0.2);
         overflow: auto;
@@ -34,9 +35,9 @@
     }
     .rightParent{
         position: relative;
-        width: 37.5%;
+        width: 33%;
         text-align: center;
-        margin-top: 90px;
+        margin-top: 0;
         background-color: rgba(255,255,255, 0.1);
         @media screen and (max-width: 600px){ 
             width: 50%;
