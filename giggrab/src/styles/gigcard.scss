@@ -35,10 +35,12 @@
         justify-content: flex-start;
         @media only screen and (max-width: 768px) {
             justify-content: space-evenly;
+            margin: 0 10px;
         }
         width:40%;
         .membersSlot{
-            width:15%;
+            position: relative;
+            width:100%;
         }
         .bandName{
         
@@ -50,7 +52,7 @@
             height:40px;
             border-radius:100%;
             @media only screen and (max-width: 768px) {
-                height: 5%;
+                max-height: 50%;
             }
         }
     }
