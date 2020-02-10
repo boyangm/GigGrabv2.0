@@ -5,6 +5,12 @@
     margin-top: 119px;
     padding-bottom: 20px;
     background: #e3e3e3;
+    @media only screen and (max-width:768px){
+        .profileTitle{
+            padding-top: 119px; 
+
+        }
+    }
 
     // background-attachment: fixed;
     .toggle{
@@ -40,6 +46,7 @@
             letter-spacing: 1rem;
             font-family: 'Arvo', serif;
                 @media only screen and (max-width:600px){
+                padding-top: 50px;
                    font-size: 5rem;
                 }
         }
@@ -66,6 +73,9 @@
         display: flex;
         flex-flow: row;
         justify-content: center;
+        @media only screen and (max-width: 600px){
+           flex-flow: row wrap;
+        }
 
         .split{
             margin: 10px;
@@ -73,6 +83,7 @@
                 line-height: 1.5rem;
                 font-family: $mainFont;
             }
+           
         }
         #instructions{
             position: relative;
@@ -87,6 +98,7 @@
             margin: 0 auto;
 
             @media only screen and (max-width:768px){
+                margin-top: -60px;
                 width: 90%;
             }
             h3{
@@ -111,6 +123,9 @@
         padding: 1rem;
         font-family: 'Aldrich', sans-serif;
         padding-top: 80px;
+        @media only screen and (max-width:768px){
+            padding-top: 119px; 
+        }
     }
     label {
         color: $compliment;

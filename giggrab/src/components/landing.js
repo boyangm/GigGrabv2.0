@@ -50,6 +50,7 @@ class Landing extends Component {
         window.addEventListener('scroll', this.setScroll);
     }
     componentWillUnmount(){
+
         window.removeEventListener('scroll', this.setScroll);
     }
 

@@ -16,6 +16,39 @@
     position: fixed;
     z-index: 3;
     background-color: black;
+    @media only screen and (max-width: 768px){
+        position: fixed;
+        top:0;
+        left:0;
+        text-align: center;
+        z-index: 500;
+        display: flex;
+        background: black;
+        flex-flow: column;
+        height: 100vh;
+        justify-content: center;
+        transform: translateX(-100%);
+        transition: all 1s;
+        &.move{
+            transition: all 1s;
+            transform: translateX(0);
+        }
+
+        align-items: center;
+        .links{
+            position: relative;
+            display: flex;
+            width: 100%;
+            margin: 0 auto;
+            flex-flow: column;
+            justify-content: center;
+            .linkItems{
+                margin: 20px auto;
+                font-size: 2rem;
+                width: 100%;
+            }
+        }
+    }
     
         .title{
             @include nav(center);
@@ -36,13 +69,10 @@
 
             }
             @media only screen and (max-width: 600px) {
-                font-size: .8rem;
-                width: 40px;
-  
-            }
-            @media screen and (min-width: 600px) and (max-width: 768px) { 
-                font-size: 1.2rem;
-            
+                font-size: 1.5rem;
+                width: 100%;
+                padding: 20px 0;
+                margin-left: 0;
             }
         }
         .links{
@@ -62,38 +92,43 @@
                 &.active{
                     color: $compliment;
                 }
+                @media only screen and (max-width: 768px){
+                    &.active{
+                        color: white;
+                    }
+                }
                 &:hover {
                 color: $base;
                 transform: scale(1.2);
             }
-                @media only screen and (max-width: 600px) {
-                    font-size: .8rem;
-                    margin: 0 10px;
-                    padding: 0;
-                    &:last-child{
-                        margin: 0
-                    }
-      
-                }
-                @media screen and (min-width: 600px) and (max-width: 768px) { 
-                    font-size: 1.2rem;
-                    margin: 0 10px;
-                    padding: 0;
-                }
+   
             }
 
         }
-        @media only screen and (max-width: 600px) {
-              font-size: .75rem;
-              padding-top: 15px;
+ 
+};
 
-              .links {
-                  margin-right: 35px;
-              }
-          }
-        @media only screen and (max-width: 833px) {
+.mobile{
+    display:none;
+    @media only screen and (max-width: 768px){
+        position: fixed;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 119px;
+        background: $compliment;
+        z-index: 1000;
+        img{
+            position:fixed;
+            top:0;
+            left:0;
 
         }
+        & .move{
+            transition: transform .8s;
+            transform: translateX(0);
+        }
 
-
-};
+    }
+}

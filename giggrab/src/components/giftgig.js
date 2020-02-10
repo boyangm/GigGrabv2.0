@@ -141,7 +141,7 @@ class Giftgig extends Component {
                 (state.isAuth='true')
 
                 ?(<div className="profileCont">
-                <h3>Gift a Gig</h3>
+                <h3 className = 'profileTitle'>Gift a Gig</h3>
                 <form onSubmit={this.handleSubmit} ref={(el) => this.myFormRef = el}>
                     <label for="title">Title:</label>
                     <input onChange={this.handleChange} value={this.state.title} type='text' name='title' />

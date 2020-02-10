@@ -20,6 +20,10 @@ import Footer from './Footer'
 function App(props) {
   const context = useContext(GigsContext)
   const{localUser} = context.state;
+
+  const handleChange = () =>{
+    console.log('ok')
+  }
   return (
     <BrowserRouter>
     <Navbar></Navbar>
