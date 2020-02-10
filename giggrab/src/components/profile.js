@@ -23,7 +23,7 @@ class Profile extends Component {
     }
     // move back to login page
     redirectToTarget = () => {
-        this.props.history.push('/login');
+        this.props.history.push('/landing');
     }
 
     // handles state change
