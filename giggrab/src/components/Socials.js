@@ -1,5 +1,6 @@
 import React from 'react'
 
+//component that renders social SVGS
 const Socials = () => {
 
     return (

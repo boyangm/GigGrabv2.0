@@ -1,17 +1,8 @@
 import React, {useState} from 'react'
 import Socials from './Socials'
 
+//constant footer for the app
 const Footer = () => {
-    const name = useInput('')
-    const email = useInput('')
-    const [errMessage, setErrMessage] = useState('')
-    const handleSubmit = e =>{
-        e.preventDefault()
-        const body = {
-            name: name.value,
-            email: email.value
-        }
-    }
 
     return (
         <div className = 'footer'>
@@ -22,16 +13,3 @@ const Footer = () => {
 }
 
 export default Footer
-
-const useInput = (initialValue) =>{
-    const [value, setValue] = useState(initialValue)
-
-   const handleValueChange = (e) =>{
-       setValue(e.target.value)
-   }
-     return {
-        value,
-        onChange : handleValueChange
-    }
-
-}

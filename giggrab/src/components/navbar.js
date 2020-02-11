@@ -5,15 +5,13 @@ import { Consumer, GigsContext } from './gigcontext'
 // routes you to different parts of the app
 const NavBar = () => {
     const [navState, setNavState] = useState('navbar') 
-    const [toggleState, setToggleState] = useState('mobile')
-    const navRef = useRef(null)
+
    
     const handleScroll =() =>{
         const media = window.matchMedia('(min-width: 768px)')
         if(media.matches){
             
             if(window.scrollY > 60){
-                console.log(window.scrollY)
                 setNavState('navbar scrolled')
             }else{
               setNavState('navbar')

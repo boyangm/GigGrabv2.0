@@ -44,7 +44,6 @@ export class Provider extends Component {
             .catch(err => {
 
                 console.log(err)
-                //this.props.history.push('/login')
             })
 
     }
@@ -59,11 +58,11 @@ export class Provider extends Component {
             .catch(err => {
 
                 console.log(err)
-                // this.props.history.push('/login')
             })
 
     }
 
+    //fetches the information oof any user based on their ID
     fetchOneUser = (id) => {
         fetch(`/api/users/${id}`)
             .then(res => res.json())

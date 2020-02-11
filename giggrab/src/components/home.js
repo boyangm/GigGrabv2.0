@@ -12,7 +12,6 @@ const Home = (props) =>{
     
     useEffect(() =>{
         context.actions.fetchGigs()
-        // context.actions.refetch();
 
     },[])
 

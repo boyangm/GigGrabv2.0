@@ -1,6 +1,7 @@
 import React, {Component, useContext, useEffect} from 'react'
 import {GigsContext} from './gigcontext'
 
+//empty comonent that renders a history push and logs the user out
  const Logout = (props) =>{
     const context = useContext(GigsContext);
     const {setIsAuth} = context.actions

@@ -1,3 +1,4 @@
+// styles for the main landing page, the main form layout & main themes throughout the app
 .landingCont, .profileCont, .homeCont, .poolCont, .activityCont, .userCont{
     @include default(100vh);
     text-align: center;
@@ -5,17 +6,12 @@
     margin-top: 119px;
     padding-bottom: 20px;
     background: #e3e3e3;
-    // .profileTitle{
-    //     padding-top: 119px;
-    // }
     @media only screen and (max-width:768px){
         .profileTitle{
             padding-top: 119px; 
 
         }
     }
-
-    // background-attachment: fixed;
     .toggle{
         position: fixed;
         top: 0;

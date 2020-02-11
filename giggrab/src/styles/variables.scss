@@ -13,12 +13,14 @@ $mainFont: 'Cabin', sans-serif;
             font-family: $mainFont;
             align-items: $position;
 }
-
+//default behavior for most containers
 @mixin default($height){
     position: relative;
     width: 100%;
     min-height: $height;
 }
+
+//mixin to style the buttons consistently
 @mixin button($primary,$secondary){
     background: $primary;
     margin: 10px 10px 0;
