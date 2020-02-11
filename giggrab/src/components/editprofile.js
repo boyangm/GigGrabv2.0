@@ -142,7 +142,7 @@ class EditProfile extends Component {
                         <option value="Other">Other</option>
                     </select>
                     <h3>{this.state.instruments.map(item => `${item}, `)}</h3>
-                    <Link to = "/login"><button>Login!</button> </Link>                
+                    <Link to = "/home"><button>Back</button> </Link>                
                     <button type="submit">Submit</button>
                     </form>
             </div>
